@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://dr7fsia6ouvox"]
+
+[ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_64i02"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="2_n6v74"]
+[ext_resource type="PackedScene" uid="uid://cq8ets5tj2do7" path="res://Detective Game/detective/Prefab/scrissor_pickable.tscn" id="3_3vptn"]
+[ext_resource type="PackedScene" uid="uid://bo5q58oxp53xi" path="res://Detective Game/detective/Assets/crime-scene/sketchfab_scene.tscn" id="13_paaag"]
+[ext_resource type="Texture2D" uid="uid://k0eddswi2kon" path="res://Detective Game/detective/Assets/Blood/Bloody Footprints 1.png" id="14_dyefy"]
+[ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="15_c7ts2"]
+[ext_resource type="Texture2D" uid="uid://dtirdk6p2v70r" path="res://Detective Game/detective/Assets/Blood/Blood Spray 8.png" id="16_4h2jf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f24su"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f24su"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f24su"]
+
+[sub_resource type="Sky" id="Sky_f24su"]
+sky_material = SubResource("ProceduralSkyMaterial_f24su")
+
+[sub_resource type="Environment" id="Environment_eqhe0"]
+background_mode = 2
+sky = SubResource("Sky_f24su")
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqhe0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f24su"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="XROrigin3D" parent="." instance=ExtResource("1_64i02")]
+
+[node name="PlayerBody2" parent="XROrigin3D" instance=ExtResource("2_n6v74")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_f24su")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_f24su")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_eqhe0")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108, 0.5, -5.31787)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_eqhe0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_f24su")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.54798)
+skeleton = NodePath("../RigidBody3D/CollisionShape3D/MeshInstance3D")
+
+[node name="PickableObject" parent="." instance=ExtResource("3_3vptn")]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("13_paaag")]
+
+[node name="BloodFootprint" type="Sprite3D" parent="Sketchfab_Scene"]
+transform = Transform3D(-0.1, -8.74228e-09, 3.82137e-16, 0, -4.37114e-09, -0.1, 8.74228e-09, -0.1, 4.37114e-09, -0.803639, 0.00228146, -0.615562)
+texture = ExtResource("14_dyefy")
+
+[node name="BloodSpray" type="Sprite3D" parent="Sketchfab_Scene"]
+transform = Transform3D(-0.0601508, 0.0798867, -3.49196e-09, -4.23516e-23, -4.37114e-09, -0.1, -0.0798867, -0.0601508, 2.62928e-09, 1.556, 0.002, 1.284)
+texture = ExtResource("15_c7ts2")
+
+[node name="Sprite3D" type="Sprite3D" parent="Sketchfab_Scene"]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 2.52, 1.25437, 0.0182471)
+texture = ExtResource("16_4h2jf")

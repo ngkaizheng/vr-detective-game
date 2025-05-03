@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://dylqep8vi7yip"]
+
+[ext_resource type="PackedScene" uid="uid://cbuomi7ks3l2n" path="res://Assets/scime-scene-fbx/source/Dioreha.fbx" id="1_m7lx7"]
+[ext_resource type="Texture2D" uid="uid://dxpu2h8ij3yqb" path="res://Assets/scime-scene-fbx/textures/Table1_albedo.jpg" id="2_71y88"]
+[ext_resource type="Texture2D" uid="uid://bs5ha3q872ql6" path="res://Assets/scime-scene-fbx/textures/Table1_metallic.jpg" id="3_bf65v"]
+[ext_resource type="Texture2D" uid="uid://bnr2nx3tcwrro" path="res://Assets/scime-scene-fbx/textures/Table1_normal.png" id="4_ov3yu"]
+[ext_resource type="Texture2D" uid="uid://wkl5q55cjli8" path="res://Assets/scime-scene-fbx/textures/Table1_roughness.jpg" id="5_a3jbg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3c62"]
+albedo_texture = ExtResource("2_71y88")
+metallic = 1.0
+metallic_texture = ExtResource("3_bf65v")
+roughness_texture = ExtResource("5_a3jbg")
+normal_enabled = true
+normal_texture = ExtResource("4_ov3yu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myr4s"]
+
+[node name="Dioreha" instance=ExtResource("1_m7lx7")]
+
+[node name="Telephone2" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y3c62")
+
+[node name="pCube34" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_myr4s")

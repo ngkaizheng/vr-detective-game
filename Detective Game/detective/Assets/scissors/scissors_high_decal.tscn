@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://ihfdspmhwm12"]
+
+[ext_resource type="PackedScene" uid="uid://b6a56oqmyfkxp" path="res://Detective Game/detective/Assets/scissors/Scissors_high.fbx" id="1_ufmqw"]
+[ext_resource type="Texture2D" uid="uid://bpxwwypmgacn6" path="res://Detective Game/detective/Assets/scissors/Scissors_high_DefaultMaterial_BaseColor.png" id="2_dg8wf"]
+[ext_resource type="Texture2D" uid="uid://3kyamub0j6jx" path="res://Detective Game/detective/Assets/scissors/Scissors_high_DefaultMaterial_Metallic.png" id="3_tspwa"]
+[ext_resource type="Texture2D" uid="uid://qa2rbnjqr4kb" path="res://Detective Game/detective/Assets/scissors/Scissors_high_DefaultMaterial_Normal.png" id="4_7j422"]
+[ext_resource type="Texture2D" uid="uid://bkkdorhq1qxgx" path="res://Detective Game/detective/Assets/scissors/Scissors_high_DefaultMaterial_Roughness.png" id="5_r7rwd"]
+[ext_resource type="Texture2D" uid="uid://dvbcld6ybl6db" path="res://Detective Game/detective/Assets/Blood/Blood Pool 27.png" id="6_yn6va"]
+[ext_resource type="Texture2D" uid="uid://e7byy3dh8re1" path="res://Detective Game/detective/Assets/Blood/Blood Pool 4.png" id="7_030ws"]
+[ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="8_lfidw"]
+[ext_resource type="Texture2D" uid="uid://csqmaumd0tqri" path="res://Detective Game/detective/Assets/Blood/Blood Pool 21.png" id="9_oj18h"]
+[ext_resource type="Texture2D" uid="uid://tno4drdyedqh" path="res://Detective Game/detective/Assets/Blood/Blood Spray 1.png" id="10_1sj3p"]
+[ext_resource type="Texture2D" uid="uid://hf7hsqa6hai0" path="res://Detective Game/detective/Assets/Blood/Blood Pool 20.png" id="11_08fyb"]
+[ext_resource type="Texture2D" uid="uid://lljc0w0nobor" path="res://Detective Game/detective/Assets/Blood/Blood Pool 18.png" id="12_66bxs"]
+[ext_resource type="Texture2D" uid="uid://c7ufalvnyi0dd" path="res://Detective Game/detective/Assets/Blood/Blood Pool 10.png" id="13_t3mh5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ytd3"]
+albedo_texture = ExtResource("2_dg8wf")
+metallic = 1.0
+metallic_texture = ExtResource("3_tspwa")
+roughness_texture = ExtResource("5_r7rwd")
+normal_enabled = true
+normal_texture = ExtResource("4_7j422")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16j4e"]
+albedo_texture = ExtResource("2_dg8wf")
+metallic = 1.0
+metallic_texture = ExtResource("3_tspwa")
+roughness_texture = ExtResource("5_r7rwd")
+normal_enabled = true
+normal_texture = ExtResource("4_7j422")
+
+[node name="Scissors_high" instance=ExtResource("1_ufmqw")]
+
+[node name="1_high" parent="." index="0"]
+transform = Transform3D(100, 8.73115e-09, 3.81651e-16, 0, -4.37114e-06, 100, 8.73115e-09, -100, -4.37114e-06, 0.28666, 0.24019, 7.75103e-05)
+surface_material_override/0 = SubResource("StandardMaterial3D_2ytd3")
+
+[node name="Sprite3D" type="Sprite3D" parent="1_high" index="0"]
+transform = Transform3D(0.000161535, -0.000986867, 7.31967e-14, -4.32106e-11, -7.14706e-12, -0.001, 0.000986867, 0.000161535, -4.37976e-11, -0.00883219, 2.13718e-05, 0)
+visible = false
+texture = ExtResource("6_yn6va")
+
+[node name="Sprite3D2" type="Sprite3D" parent="1_high" index="1"]
+transform = Transform3D(-0.000366599, -0.000930379, -9.93181e-11, -2.20981e-11, 1.15457e-10, -0.001, 0.000930379, -0.000366599, -6.28861e-11, -0.016962, 2.1372e-05, -0.000285562)
+visible = false
+pixel_size = 0.0025
+texture = ExtResource("7_030ws")
+
+[node name="Sprite3D3" type="Sprite3D" parent="1_high" index="2"]
+transform = Transform3D(-0.000366599, -0.000930379, -9.93181e-11, -2.20982e-11, 1.15458e-10, -0.001, 0.000930379, -0.000366599, -6.28861e-11, -0.022161, -0.000436168, -0.000374677)
+visible = false
+pixel_size = 0.002
+texture = ExtResource("7_030ws")
+
+[node name="Sprite3D4" type="Sprite3D" parent="1_high" index="3"]
+transform = Transform3D(-0.000999862, -1.65974e-05, 7.25494e-13, -5.42101e-20, -4.37114e-11, -0.001, 1.65974e-05, -0.000999862, 4.37054e-11, -0.00944124, -0.000429487, -0.000161214)
+visible = false
+pixel_size = 0.0022
+texture = ExtResource("8_lfidw")
+
+[node name="Decal2" type="Decal" parent="1_high" index="4"]
+transform = Transform3D(0.00747732, -3.30137e-10, 0.0130035, 2.40225e-10, 0.015, 2.4269e-10, -0.0130035, 8.72721e-11, 0.00747732, -0.00375805, 1.88152e-11, 0)
+texture_albedo = ExtResource("9_oj18h")
+
+[node name="Decal3" type="Decal" parent="1_high" index="5"]
+transform = Transform3D(0.00747732, -3.30137e-10, 0.0130035, 2.40225e-10, 0.015, 2.4269e-10, -0.0130035, 8.72721e-11, 0.00747732, 0.00996242, -9.00968e-11, 0.00251813)
+texture_albedo = ExtResource("10_1sj3p")
+
+[node name="2_high" parent="." index="1"]
+transform = Transform3D(99.9999, -2.32831e-08, 0.138111, -0.138111, -3.4729e-05, 99.9999, 2.32831e-08, -100, -3.4729e-05, 0.28666, 0.24019, 7.75104e-05)
+surface_material_override/0 = SubResource("StandardMaterial3D_16j4e")
+
+[node name="Sprite3D" type="Sprite3D" parent="2_high" index="0"]
+transform = Transform3D(0.000161535, -0.000986867, 4.31373e-11, 2.77556e-17, -4.37114e-11, -0.001, 0.000986867, 0.000161535, -7.06082e-12, -0.0123606, -2.06965e-06, 0.000788798)
+visible = false
+pixel_size = 0.0035
+texture = ExtResource("11_08fyb")
+
+[node name="Sprite3D2" type="Sprite3D" parent="2_high" index="1"]
+transform = Transform3D(0.000613265, 0.000789877, 3.17967e-10, 6.49419e-10, -1.01661e-10, -0.001, -0.000789877, 0.000613265, -5.75306e-10, -0.0199632, -1.09549e-09, -0.000100232)
+visible = false
+pixel_size = 0.004
+texture = ExtResource("12_66bxs")
+
+[node name="Sprite3D3" type="Sprite3D" parent="2_high" index="2"]
+transform = Transform3D(0.000161535, -0.000986867, 4.31373e-11, -8.32667e-17, -4.37114e-11, -0.001, 0.000986867, 0.000161535, -7.0608e-12, -0.0153298, 0.000616753, 0.000784697)
+visible = false
+pixel_size = 0.0035
+texture = ExtResource("11_08fyb")
+
+[node name="Sprite3D4" type="Sprite3D" parent="2_high" index="3"]
+transform = Transform3D(0.000237465, 0.000971395, 9.38671e-11, 6.80102e-10, -6.96252e-11, -0.000999999, -0.000971396, 0.000237465, -6.77182e-10, -0.0178117, 0.000616753, -0.000292721)
+visible = false
+pixel_size = 0.0035
+texture = ExtResource("11_08fyb")
+
+[node name="Sprite3D5" type="Sprite3D" parent="2_high" index="4"]
+transform = Transform3D(-0.000753436, 0.00065752, -2.49667e-10, 5.70865e-10, 2.74432e-10, -0.000999998, -0.00065752, -0.000753437, -5.82122e-10, -0.00555516, 0.000616752, 1.47354e-05)
+visible = false
+pixel_size = 0.003
+texture = ExtResource("10_1sj3p")
+
+[node name="Sprite3D6" type="Sprite3D" parent="2_high" index="5"]
+transform = Transform3D(0.000237465, 0.000971395, 9.38671e-11, 6.80102e-10, -6.96252e-11, -0.000999999, -0.000971395, 0.000237465, -6.77182e-10, -0.02403, 0.000616753, -0.000301309)
+visible = false
+pixel_size = 0.002
+texture = ExtResource("13_t3mh5")
+
+[node name="Decal" type="Decal" parent="2_high" index="6"]
+transform = Transform3D(0.015, 6.50521e-19, 1.2129e-18, -6.50521e-19, 0.015, 3.33067e-16, -1.2129e-18, -3.33067e-16, 0.015, -0.0217397, 5.34328e-12, -3.00249e-05)
+texture_albedo = ExtResource("8_lfidw")
+
+[node name="3_high" parent="." index="2"]
+transform = Transform3D(99.9999, -2.32831e-08, 0.138111, -0.138111, -3.4729e-05, 99.9999, 2.32831e-08, -100, -3.4729e-05, 0.28666, 0.24019, 7.75104e-05)
+surface_material_override/0 = SubResource("StandardMaterial3D_16j4e")

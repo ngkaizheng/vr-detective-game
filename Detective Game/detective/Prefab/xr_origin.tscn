@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cutpc4hwsxntf"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_rturn"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="3_m0ncy"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_v0u4l"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_fnnc4"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_v0u4l"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_qile6"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="XRController3D" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRController3D" instance=ExtResource("2_rturn")]
+
+[node name="MovementDirect" parent="XRController3D" instance=ExtResource("3_v0u4l")]
+max_speed = 1.0
+strafe = true
+
+[node name="FunctionPickup" parent="XRController3D" instance=ExtResource("4_fnnc4")]
+
+[node name="XRController3D2" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRController3D2" instance=ExtResource("3_m0ncy")]
+
+[node name="MovementTurn" parent="XRController3D2" instance=ExtResource("5_v0u4l")]
+turn_mode = 1
+step_turn_angle = 45.0
+
+[node name="FunctionPickup" parent="XRController3D2" instance=ExtResource("4_fnnc4")]
+
+[node name="PlayerBody" parent="." instance=ExtResource("6_qile6")]

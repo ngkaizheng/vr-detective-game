@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo5q58oxp53xi"]
+
+[ext_resource type="PackedScene" uid="uid://cbmr67ng3mopw" path="res://Detective Game/detective/Assets/crime-scene/victorian_diorama.glb" id="1_21wte"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gw828"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_21wte")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube34/pCube34_Floor_0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube34/pCube34_Floor_0/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_gw828")
