@@ -1,13 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=26 format=3 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
-[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="2_nxj7t"]
-[ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Prefab/pickable_scissor.gd" id="4_32dhj"]
+[ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
 [ext_resource type="PackedScene" uid="uid://bo5q58oxp53xi" path="res://Detective Game/detective/Assets/crime-scene/sketchfab_scene.tscn" id="4_gwd0x"]
 [ext_resource type="PackedScene" uid="uid://cq8ets5tj2do7" path="res://Detective Game/detective/Prefab/scrissor_pickable.tscn" id="4_nxj7t"]
 [ext_resource type="Texture2D" uid="uid://dtirdk6p2v70r" path="res://Detective Game/detective/Assets/Blood/Blood Spray 8.png" id="5_gwd0x"]
 [ext_resource type="Texture2D" uid="uid://k0eddswi2kon" path="res://Detective Game/detective/Assets/Blood/Bloody Footprints 1.png" id="5_qvn0q"]
 [ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="6_2bdsp"]
+[ext_resource type="PackedScene" uid="uid://dmm7cmme7pgs8" path="res://Detective Game/detective/Prefab/idle_detective.tscn" id="10_d6ov1"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="10_g5n14"]
+[ext_resource type="Script" uid="uid://ydpjpogf2qst" path="res://Detective Game/detective/Scripts/detective.gd" id="10_hi3gy"]
+[ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="11_1f867"]
+[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_kn78k"]
+[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="13_d6ov1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f24su"]
 
@@ -28,11 +33,30 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_f24su"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_kn78k"]
+viewport_path = NodePath("Detective/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="QuadMesh" id="QuadMesh_d6ov1"]
+resource_local_to_scene = true
+size = Vector2(1280, 720)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d6ov1"]
+viewport_path = NodePath("Detective/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kn78k"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_d6ov1")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swrli"]
+resource_local_to_scene = true
+size = Vector3(1280, 720, 0.02)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="XROrigin3D" parent="." instance=ExtResource("1_viwek")]
-
-[node name="PlayerBody2" parent="XROrigin3D" instance=ExtResource("2_nxj7t")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -45,11 +69,11 @@ mesh = SubResource("PlaneMesh_f24su")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_f24su")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MeshInstance3D"]
 environment = SubResource("Environment_eqhe0")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.108, 0.5, -5.31787)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.689014, -0.148982, -6.40094)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 shape = SubResource("BoxShape3D_eqhe0")
@@ -66,16 +90,73 @@ skeleton = NodePath("../RigidBody3D/CollisionShape3D/MeshInstance3D")
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 1.665, 0.0565826, -2.113)
 script = ExtResource("4_32dhj")
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("4_gwd0x")]
+[node name="Room_Scene" parent="." instance=ExtResource("4_gwd0x")]
 
-[node name="BloodFootprint" type="Sprite3D" parent="Sketchfab_Scene"]
+[node name="BloodFootprint" type="Sprite3D" parent="Room_Scene"]
 transform = Transform3D(-0.1, -8.74228e-09, 3.82137e-16, 0, -4.37114e-09, -0.1, 8.74228e-09, -0.1, 4.37114e-09, -0.803639, 0.00228146, -0.615562)
 texture = ExtResource("5_qvn0q")
 
-[node name="BloodSpray" type="Sprite3D" parent="Sketchfab_Scene"]
+[node name="BloodSpray" type="Sprite3D" parent="Room_Scene"]
 transform = Transform3D(-0.0601508, 0.0798867, -3.49196e-09, -4.23516e-23, -4.37114e-09, -0.1, -0.0798867, -0.0601508, 2.62928e-09, 1.556, 0.002, 1.284)
 texture = ExtResource("6_2bdsp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Sketchfab_Scene"]
+[node name="Sprite3D" type="Sprite3D" parent="Room_Scene"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 2.52, 1.25437, 0.0182471)
 texture = ExtResource("5_gwd0x")
+
+[node name="Decal" type="Decal" parent="Room_Scene"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0433073, -0.0561681, 0.901022)
+visible = false
+size = Vector3(5, 0.186981, 5)
+texture_albedo = ExtResource("6_2bdsp")
+
+[node name="Detective" parent="." instance=ExtResource("10_d6ov1")]
+transform = Transform3D(-0.117139, 0, 0.993116, 0, 1, 0, -0.993116, 0, -0.117139, -1.71752, 0, 0)
+script = ExtResource("10_hi3gy")
+
+[node name="Sprite3D" type="Sprite3D" parent="Detective"]
+transform = Transform3D(0.0993116, 0, -0.0117139, 0, 0.1, 0, 0.0117139, 0, 0.0993116, -0.0416021, 1.30659, 0.286761)
+billboard = 2
+texture = SubResource("ViewportTexture_kn78k")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="Detective/Sprite3D"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("11_kn78k")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("11_1f867")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DetetiveUI.gd")
+
+[node name="Viewport" type="SubViewport" parent="Detective/Sprite3D/Viewport2DIn3D"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Detective/Sprite3D/Viewport2DIn3D"]
+visible = false
+mesh = SubResource("QuadMesh_d6ov1")
+surface_material_override/0 = SubResource("StandardMaterial3D_kn78k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Detective/Sprite3D/Viewport2DIn3D"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("13_d6ov1")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detective/Sprite3D/Viewport2DIn3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_swrli")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("10_g5n14")]
+transform = Transform3D(-6.70206e-06, 0, 0.000999977, 0, 0.001, 0, -0.000999977, 0, -6.70206e-06, -1.55504, 1.15434, 1.6419)
+screen_size = Vector2(1280, 720)
+scene = ExtResource("11_1f867")
+viewport_size = Vector2(1280, 720)
+unshaded = true
+scene_properties_keys = PackedStringArray("DetetiveUI.gd")

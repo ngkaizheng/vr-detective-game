@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://b725sa2m0kugo"]
+
+[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="1_vjubm"]
+[ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="2_r748r"]
+[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="3_fo3lw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d6ov1"]
+viewport_path = NodePath("Sprite3D/Viewport2Din3D/Viewport")
+
+[sub_resource type="QuadMesh" id="QuadMesh_hi3gy"]
+resource_local_to_scene = true
+size = Vector2(1280, 720)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vjubm"]
+viewport_path = NodePath("Viewport2Din3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r748r"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_vjubm")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3f441"]
+resource_local_to_scene = true
+size = Vector3(1280, 720, 0.02)
+
+[node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_d6ov1")
+
+[node name="Viewport2Din3D" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("1_vjubm")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("2_r748r")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray()
+
+[node name="Viewport" type="SubViewport" parent="Viewport2Din3D"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Viewport2Din3D"]
+visible = false
+mesh = SubResource("QuadMesh_hi3gy")
+surface_material_override/0 = SubResource("StandardMaterial3D_r748r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Viewport2Din3D"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("3_fo3lw")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Viewport2Din3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_3f441")

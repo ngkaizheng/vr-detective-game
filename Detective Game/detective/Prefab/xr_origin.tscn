@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cutpc4hwsxntf"]
+[gd_scene load_steps=10 format=3 uid="uid://cutpc4hwsxntf"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_rturn"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="3_m0ncy"]
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="3_v0u4l"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_fnnc4"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_mver6"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_v0u4l"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_qile6"]
+[ext_resource type="Script" uid="uid://faim0ac4nb4g" path="res://addons/godot-xr-tools/player/player_body.gd" id="8_x04kk"]
 
-[node name="XROrigin3D" type="XROrigin3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mver6"]
+
+[node name="XROrigin3D" type="XROrigin3D" groups=["player", "player_body"]]
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -24,6 +28,11 @@ strafe = true
 
 [node name="FunctionPickup" parent="XRController3D" instance=ExtResource("4_fnnc4")]
 
+[node name="FunctionPointer" parent="XRController3D" instance=ExtResource("4_mver6")]
+show_laser = 2
+laser_length = 1
+show_target = true
+
 [node name="XRController3D2" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
@@ -36,4 +45,18 @@ step_turn_angle = 45.0
 
 [node name="FunctionPickup" parent="XRController3D2" instance=ExtResource("4_fnnc4")]
 
-[node name="PlayerBody" parent="." instance=ExtResource("6_qile6")]
+[node name="FunctionPointer" parent="XRController3D2" instance=ExtResource("4_mver6")]
+show_laser = 2
+laser_length = 1
+
+[node name="PlayerBody" type="CharacterBody3D" parent="." groups=["player", "player_body"] instance=ExtResource("6_qile6")]
+process_priority = -100
+process_physics_priority = -100
+top_level = true
+collision_layer = 524289
+collision_mask = 1023
+script = ExtResource("8_x04kk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody" groups=["player", "player_body"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mver6")

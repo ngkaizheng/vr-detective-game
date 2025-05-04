@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://hcffttg64p7f"]
+
+[node name="DetectiveUi" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+light_mask = 2
+visibility_layer = 2
+z_index = 4096
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.1, 0.1)
+color = Color(0.231151, 0.748181, 1, 0.27451)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "Press Trigger To Interact"
+
+[node name="Button2" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "Press Trigger To Interact"
+
+[node name="Button3" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+text = "Press Trigger To Interact"

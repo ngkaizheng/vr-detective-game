@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="VR Detective Game"
-run/main_scene="uid://dr7fsia6ouvox"
+run/main_scene="uid://bpmluja1ksvqo"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
