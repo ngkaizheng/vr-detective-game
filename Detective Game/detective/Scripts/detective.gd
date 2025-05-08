@@ -26,7 +26,7 @@ var player : Node = null
 @onready var dialog : XRToolsViewport2DIn3D = $Sprite3D/Viewport2DIn3D
 
 ## Reference to the dialog message label within the instanced scene
-@onready var message_label : Label = dialog.get_scene_instance().get_node("Control/ColorRect/Dialog")
+@onready var message_label : Label = dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Dialog")
 
 ## Store the original scale of prompt and dialog to restore when enabling
 var original_prompt_scale : Vector3 = Vector3(1, 1, 1)

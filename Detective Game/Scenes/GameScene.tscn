@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="11_1f867"]
 [ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_kn78k"]
 [ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="13_d6ov1"]
-[ext_resource type="PackedScene" uid="uid://dv8b48mylkc0p" path="res://Detective Game/detective/Prefab/Detective_Old.tscn" id="14_dimmv"]
 [ext_resource type="PackedScene" uid="uid://h4rwn1c7ifyw" path="res://Detective Game/detective/Assets/Detective-9-5/Detective-9-5.tscn" id="14_od06o"]
 [ext_resource type="PackedScene" uid="uid://bwkv3q0fvapaq" path="res://scenes/teleport_demo/objects/teleport_area_start.tscn" id="14_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://cd644gck0s6q1" path="res://Detective Game/detective/Assets/Damage_Floor/Damage_Floor_Mat.tres" id="15_3f441"]
@@ -21,6 +20,7 @@
 [ext_resource type="Script" uid="uid://vexjc7jg70gn" path="res://addons/godot-xr-tools/objects/teleport_area.gd" id="15_o0gwd"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
 [ext_resource type="PackedScene" uid="uid://2j2ufl3svgcl" path="res://scenes/teleport_demo/objects/teleport_area_end.tscn" id="16_o0gwd"]
+[ext_resource type="PackedScene" uid="uid://ix5hheaueuqp" path="res://Detective Game/detective/Prefab/DialogUI.tscn" id="18_od06o"]
 [ext_resource type="BoxMesh" uid="uid://u1wapv31hxwo" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh.tres" id="19_l0usc"]
 [ext_resource type="BoxMesh" uid="uid://bs6wll3ae6mn6" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_2.tres" id="20_dudoj"]
 
@@ -60,7 +60,7 @@ size = Vector2(1280, 720)
 [sub_resource type="ViewportTexture" id="ViewportTexture_l0usc"]
 viewport_path = NodePath("InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dudoj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od06o"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -83,7 +83,7 @@ size = Vector3(30, 5, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="XROrigin3D" parent="." instance=ExtResource("1_viwek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21009, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5031, 0, 0.962902)
 
 [node name="MeshInstance3D(Plane)" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -163,8 +163,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrimeScene/Room_Scene/CollisionWall/StaticBody3D4"]
 shape = SubResource("BoxShape3D_3f441")
 
-[node name="Scissor_Pickable" parent="CrimeScene" instance=ExtResource("4_nxj7t")]
+[node name="Scissor_Pickable" parent="CrimeScene" groups=["Scissors"] instance=ExtResource("4_nxj7t")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 1.665, 0.0565826, -2.113)
+script = ExtResource("4_32dhj")
+
+[node name="Scissor_Pickable2" parent="CrimeScene" groups=["Scissors"] instance=ExtResource("4_nxj7t")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -23.5688, 0.0565826, -1.67167)
 script = ExtResource("4_32dhj")
 
 [node name="Viewport2Din3D" parent="CrimeScene" instance=ExtResource("10_g5n14")]
@@ -173,7 +177,7 @@ screen_size = Vector2(1280, 720)
 scene = ExtResource("11_1f867")
 viewport_size = Vector2(1280, 720)
 unshaded = true
-scene_properties_keys = PackedStringArray("DetetiveUI.gd")
+scene_properties_keys = PackedStringArray("DialogUI_Detective.gd")
 
 [node name="TeleportAreaStart" parent="CrimeScene" instance=ExtResource("14_pb52e")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.86554, 0, -0.941518)
@@ -218,11 +222,8 @@ shape = SubResource("CylinderShape3D_l0usc")
 [node name="TeleportTarget" type="Marker3D" parent="InterrogationRoom/TeleportAreaEnd"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56366, 0.1, 0)
 
-[node name="AuxScene" parent="InterrogationRoom" instance=ExtResource("14_od06o")]
+[node name="Detective_New" parent="InterrogationRoom" instance=ExtResource("14_od06o")]
 transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.0489, 0, 5.50775)
-
-[node name="Idle" parent="InterrogationRoom" instance=ExtResource("14_dimmv")]
-transform = Transform3D(-0.596575, 0, 0.802558, 0, 1, 0, -0.802558, 0, -0.596575, -14.0489, 0, 13.5396)
 
 [node name="Detective" parent="InterrogationRoom" instance=ExtResource("10_d6ov1")]
 transform = Transform3D(-0.596575, 0, 0.802558, 0, 1, 0, -0.802558, 0, -0.596575, -14.0489, 0, 18.3795)
@@ -237,12 +238,12 @@ texture = SubResource("ViewportTexture_kn78k")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 script = ExtResource("11_kn78k")
 screen_size = Vector2(1280, 720)
-scene = ExtResource("11_1f867")
+scene = ExtResource("18_od06o")
 viewport_size = Vector2(1280, 720)
 alpha_scissor_threshold = 0.25
 unshaded = true
 filter = true
-scene_properties_keys = PackedStringArray("DetetiveUI.gd")
+scene_properties_keys = PackedStringArray("DialogUI.gd")
 
 [node name="Viewport" type="SubViewport" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
 disable_3d = true
@@ -254,7 +255,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_d6ov1")
-surface_material_override/0 = SubResource("StandardMaterial3D_dudoj")
+surface_material_override/0 = SubResource("StandardMaterial3D_od06o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881

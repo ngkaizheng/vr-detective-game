@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://ix5hheaueuqp"]
 
-[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DetetiveUI.gd" id="1_8d2j8"]
+[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DialogUI.gd" id="1_8d2j8"]
 
 [node name="DetectiveUi_CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_8d2j8")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control_Dialog" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control_Dialog"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 0
@@ -24,7 +24,7 @@ offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0, 0.647059, 1, 0.196078)
 
-[node name="Dialog" type="Label" parent="Control/ColorRect"]
+[node name="Dialog" type="Label" parent="Control_Dialog/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -40,43 +40,43 @@ vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 161
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="Control_Dialog/ColorRect"]
 layout_mode = 0
 offset_top = 500.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="GridContainer_Button" type="GridContainer" parent="Control/ColorRect/CenterContainer"]
+[node name="GridContainer_Button" type="GridContainer" parent="Control_Dialog/ColorRect/CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="Previous" type="Button" parent="Control/ColorRect/CenterContainer/GridContainer_Button"]
+[node name="Previous" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Previous"
 
-[node name="Next" type="Button" parent="Control/ColorRect/CenterContainer/GridContainer_Button"]
+[node name="Next" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Next"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control_Dialog/ColorRect"]
 visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_Dialog/ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Button3" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Control_Dialog/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Press Trigger To Interact"

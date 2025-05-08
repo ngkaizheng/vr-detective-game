@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbhn3groqfxt6"]
 
-[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DetetiveUI.gd" id="1_ehmth"]
+[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DialogUI.gd" id="1_ehmth"]
 
 [node name="DetectiveUi_CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ehmth")

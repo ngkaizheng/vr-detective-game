@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://ckkbqjsqy4ppf"]
+
+[ext_resource type="Script" uid="uid://clj5odghi6pnm" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_fa163"]
+[ext_resource type="PackedScene" uid="uid://dkbys0eyutfs6" path="res://Detective Game/detective/Assets/scissors/scissors_high.tscn" id="2_ydgyf"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_eqaj2"]
+[ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="4_yby0f"]
+[ext_resource type="Script" uid="uid://duj6gh3e2j0o1" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_arl78"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_fwu5r"]
+[ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="7_cq8oj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmw8c"]
+size = Vector3(0.217529, 1.52274, 1.34879)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfhfv"]
+size = Vector3(0.0273476, 0.0488815, 0.373291)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ij7qs"]
+size = Vector3(0.0216408, 0.026, 0.055)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fa163"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="Resource" id="Resource_xdxlm"]
+script = ExtResource("5_arl78")
+closed_pose = ExtResource("4_yby0f")
+metadata/_custom_type_script = "uid://duj6gh3e2j0o1"
+
+[sub_resource type="Resource" id="Resource_dyjq7"]
+script = ExtResource("5_arl78")
+closed_pose = ExtResource("7_cq8oj")
+metadata/_custom_type_script = "uid://duj6gh3e2j0o1"
+
+[node name="PickableObject" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("1_fa163")
+
+[node name="Scissors" parent="." instance=ExtResource("2_ydgyf")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 0, 0, -0.201)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Scissors"]]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.054, -0.013)
+shape = SubResource("BoxShape3D_fmw8c")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000314713, 0.0230217, -0.266235)
+shape = SubResource("BoxShape3D_wfhfv")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000372306, 0.0614152, -0.107772)
+shape = SubResource("BoxShape3D_ij7qs")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Scissors"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_fa163")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("3_eqaj2")]
+transform = Transform3D(0.925188, -0.252411, -0.2834, 0.283898, -0.0352473, 0.958206, -0.251851, -0.966978, 0.0390485, -0.0011074, -0.0230775, -0.0786228)
+hand_pose = SubResource("Resource_xdxlm")
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("6_fwu5r")]
+transform = Transform3D(0.853091, 0.318325, 0.413408, -0.439768, 0.0122838, 0.898028, 0.280786, -0.947902, 0.150468, 0, -0.01, -0.0785857)
+hand_pose = SubResource("Resource_dyjq7")

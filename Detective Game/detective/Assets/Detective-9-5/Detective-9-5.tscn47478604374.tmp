@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://b0mru3mewakbr" path="res://Detective Game/detective/Assets/Detective-9-5/priv_investigator.gltf" id="1_n2skb"]
 [ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="2_jde5r"]
 [ext_resource type="Script" uid="uid://b680pgrb4wqiv" path="res://Detective Game/detective/Scripts/Interactable3D.gd" id="2_os7td"]
+[ext_resource type="PackedScene" uid="uid://ix5hheaueuqp" path="res://Detective Game/detective/Prefab/DialogUI.tscn" id="3_os7td"]
 [ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="4_mc6ay"]
-[ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="4_os7td"]
 [ext_resource type="Script" uid="uid://cednya0pgsg8u" path="res://Detective Game/detective/Scripts/DetectCollisionWithItem.gd" id="6_os7td"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_raoeg"]
@@ -37,7 +37,6 @@ size = Vector3(6, 6, 6)
 [node name="AuxScene" instance=ExtResource("1_n2skb")]
 script = ExtResource("2_os7td")
 messages = Array[String](["Interact to proceed!", "2", "3"])
-original_message_size = 3
 animation_clips = Array[String](["CatwalkIdle02", "Smoking", "mixamo_com"])
 default_animation = "CatwalkIdle02"
 use_default_animation = true
@@ -91,18 +90,19 @@ text = "Hey, Come here."
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.069851, 1.11863, -0.00349915)
+billboard = 2
 texture = SubResource("ViewportTexture_7rybi")
 
 [node name="Viewport2DIn3D" type="Node3D" parent="Sprite3D" index="0"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 script = ExtResource("2_jde5r")
 screen_size = Vector2(1280, 720)
-scene = ExtResource("4_os7td")
+scene = ExtResource("3_os7td")
 viewport_size = Vector2(1280, 720)
 alpha_scissor_threshold = 0.25
 unshaded = true
 filter = true
-scene_properties_keys = PackedStringArray("DialogUI_Detective.gd")
+scene_properties_keys = PackedStringArray("DetetiveUI.gd")
 
 [node name="Viewport" type="SubViewport" parent="Sprite3D/Viewport2DIn3D" index="0"]
 disable_3d = true

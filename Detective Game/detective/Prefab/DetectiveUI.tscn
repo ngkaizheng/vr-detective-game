@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://cjgyl4jb6wbwk"]
 
-[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DetetiveUI.gd" id="1_vjfdt"]
+[ext_resource type="Script" uid="uid://biq8bl84dx4j3" path="res://Detective Game/detective/Scripts/DialogUI_Detective.gd" id="1_vjfdt"]
 
 [node name="DetectiveUi_CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_vjfdt")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control_Dialog" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +16,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control_Dialog"]
 light_mask = 2
 visibility_layer = 2
 layout_mode = 0
@@ -24,7 +25,7 @@ offset_bottom = 720.0
 mouse_filter = 2
 color = Color(0, 0.647059, 1, 0.196078)
 
-[node name="Dialog" type="Label" parent="Control/ColorRect"]
+[node name="Dialog" type="Label" parent="Control_Dialog/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -40,43 +41,195 @@ vertical_alignment = 1
 autowrap_mode = 3
 justification_flags = 161
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="Control_Dialog/ColorRect"]
 layout_mode = 0
 offset_top = 500.0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="GridContainer_Button" type="GridContainer" parent="Control/ColorRect/CenterContainer"]
+[node name="GridContainer_Button" type="GridContainer" parent="Control_Dialog/ColorRect/CenterContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 0
-columns = 2
+columns = 3
 
-[node name="Previous" type="Button" parent="Control/ColorRect/CenterContainer/GridContainer_Button"]
+[node name="Previous" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Previous"
 
-[node name="Next" type="Button" parent="Control/ColorRect/CenterContainer/GridContainer_Button"]
+[node name="Next" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Next"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+[node name="IdentifyMurderer" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Identify Killer"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Dialog/ColorRect"]
 visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_Dialog/ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Button3" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Control_Dialog/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 text = "Press Trigger To Interact"
+
+[node name="Control_Identify" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control_Identify"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0, 0.647059, 1, 0.196078)
+
+[node name="Label" type="Label" parent="Control_Identify/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 500.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Who do you think is the murderer?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="CenterContainer" type="CenterContainer" parent="Control_Identify/ColorRect"]
+layout_mode = 0
+offset_top = 500.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="GridContainer_Button" type="GridContainer" parent="Control_Identify/ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Back" type="Button" parent="Control_Identify/ColorRect/CenterContainer/GridContainer_Button"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Identify/ColorRect"]
+layout_mode = 0
+offset_top = 89.0
+offset_right = 1280.0
+offset_bottom = 553.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control_Identify/ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button_Suspect1" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Johnson (Chef)"
+
+[node name="Button_Suspect2" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Lily (Maid)"
+
+[node name="Button_Suspect3" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Gwen (Tailor)"
+
+[node name="Control_Confirmation" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Confirmation"]
+custom_minimum_size = Vector2(0.035, 0)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRectBg" type="ColorRect" parent="Control_Confirmation/MarginContainer"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+color = Color(0, 0.647059, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Control_Confirmation/MarginContainer/ColorRectBg"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 2
+offset_left = 220.0
+offset_top = 180.0
+offset_right = 1060.0
+offset_bottom = 540.0
+pivot_offset = Vector2(0.5, 0.5)
+color = Color(0, 0.647059, 1, 1)
+
+[node name="Label" type="Label" parent="Control_Confirmation/MarginContainer/ColorRectBg/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -314.0
+offset_right = 316.0
+offset_bottom = 96.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="GridContainer_Button" type="GridContainer" parent="Control_Confirmation/MarginContainer/ColorRectBg/ColorRect"]
+offset_left = 70.0
+offset_top = 200.0
+offset_right = 770.0
+offset_bottom = 300.0
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="No" type="Button" parent="Control_Confirmation/MarginContainer/ColorRectBg/ColorRect/GridContainer_Button"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "No"
+
+[node name="Yes" type="Button" parent="Control_Confirmation/MarginContainer/ColorRectBg/ColorRect/GridContainer_Button"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Yes"

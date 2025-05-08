@@ -1,12 +1,12 @@
 extends Node3D
 
 ## Script for a reusable 3D interactable object (NPCs, doors, etc.) with proximity-based prompts and optional dialog.
-## Supports VR (via XRToolsViewport2DIn3D) and non-VR interactions.
+## Supports VR (via XRToolsViewport2DIn3D) interactions only, with animation playback and default animation fallback for dialog messages.
 
 ## Enum to define the type of interaction
 enum InteractionType {
-	DIALOG,      ## Displays a cycling dialog (e.g., for NPCs)
-	PROMPT,      ## Displays a single prompt (e.g., "Press A to open" for doors)
+	DIALOG,      ## Displays a cycling dialog (e.g., for NPCs), controlled by Next/Previous buttons with optional animations and default fallback
+	PROMPT,      ## Displays a single prompt (e.g., "Press to open" for doors)
 	CUSTOM       ## Emits a signal for custom interaction handling
 }
 
@@ -14,6 +14,10 @@ enum InteractionType {
 @export var interaction_type: InteractionType = InteractionType.DIALOG
 @export var target_group: String = "player" ## Group name of the interacting entity (e.g., "player")
 @export var messages: Array[String] = ["Interact to proceed!"] ## Messages or prompt text
+@export var original_message_size: int = 0 ## Initial size of messages array
+@export var animation_clips: Array[String] = [] ## Animation clip names corresponding to messages
+@export var default_animation: String = "" ## Default animation clip to play when dialog animations finish
+@export var use_default_animation: bool = false ## If true, play default animation after dialog animations
 @export var prompt_texture: Texture2D = null ## Optional texture for the prompt
 @export var enable_logging: bool = true ## Enable/disable debug logging
 
@@ -30,7 +34,8 @@ var interacting_entity: Node = null
 @onready var proximity_area: Area3D = $ProximityArea
 @onready var prompt: Sprite3D = $Sprite3D
 @onready var dialog: XRToolsViewport2DIn3D = $Sprite3D/Viewport2DIn3D
-@onready var message_label: Label = (dialog.get_scene_instance().get_node("Control/ColorRect/Dialog") if dialog and dialog.get_scene_instance() else null)
+@onready var message_label: Label = (dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Dialog") if dialog and dialog.get_scene_instance() else null)
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 ## Store original scale of prompt for enabling/disabling
 var original_prompt_scale: Vector3 = Vector3(1, 1, 1)
@@ -39,6 +44,10 @@ func _ready() -> void:
 	# Initialize node references and signals
 	_log("Initializing interactable object, interaction_type=%s" % InteractionType.keys()[interaction_type])
 
+	# Set original_message_size
+	original_message_size = messages.size()
+	_log("Original message size set to: %s" % original_message_size)
+	
 	# Store original prompt scale
 	if prompt:
 		original_prompt_scale = prompt.scale
@@ -78,6 +87,18 @@ func _ready() -> void:
 	if dialog:
 		dialog.pointer_event.connect(_on_pointer_event)
 		_log("Connected to pointer_event signal")
+
+	# Check AnimationPlayer and connect animation_finished signal
+	if animation_player:
+		_log("AnimationPlayer found at $AnimationPlayer")
+		if use_default_animation and default_animation != "":
+			if animation_player.has_animation(default_animation):
+				animation_player.animation_finished.connect(_on_animation_finished)
+				_log("Connected animation_finished signal for default animation: %s" % default_animation)
+			else:
+				_log("WARNING: Default animation '%s' not found in AnimationPlayer" % default_animation, true)
+	else:
+		_log("WARNING: AnimationPlayer is null; animations will not play", true)
 
 	# Set initial message or prompt
 	_update_display()
@@ -131,13 +152,6 @@ func _on_pointer_event(event: XRToolsPointerEvent) -> void:
 	else:
 		_log("Ignored pointer event, type=%s" % event.event_type)
 
-func _input(event: InputEvent) -> void:
-	# Handle non-VR input (e.g., "interact" action for doors)
-	if interacting_entity and interaction_type != InteractionType.DIALOG:
-		if event.is_action_pressed("interact"):
-			_log("Interact action pressed")
-			_handle_interaction()
-
 func _on_next_button_pressed() -> void:
 	# Cycle to the next message in DIALOG mode
 	if interaction_type == InteractionType.DIALOG:
@@ -153,12 +167,8 @@ func _on_previous_button_pressed() -> void:
 		_update_display()
 
 func _handle_interaction() -> void:
-	# Handle interaction based on type
+	# Handle interaction based on type (excluding DIALOG)
 	match interaction_type:
-		#InteractionType.DIALOG:
-			#current_message_index = (current_message_index + 1) % messages.size()
-			#_log("Dialog interaction, current_message_index=%s" % current_message_index)
-			#_update_display()
 		InteractionType.PROMPT, InteractionType.CUSTOM:
 			_log("Emitting interacted signal")
 			emit_signal("interacted", self)
@@ -168,11 +178,63 @@ func _update_display() -> void:
 	if interaction_type == InteractionType.DIALOG and message_label:
 		message_label.text = messages[current_message_index]
 		_log("Dialog updated, message=%s" % message_label.text)
+		
+		# Play corresponding animation if available
+		if animation_player and current_message_index < animation_clips.size() and animation_clips[current_message_index] != "":
+			var anim_name = animation_clips[current_message_index]
+			if animation_player.has_animation(anim_name):
+				animation_player.play(anim_name)
+				_log("Playing animation: %s" % anim_name)
+			else:
+				_log("WARNING: Animation '%s' not found in AnimationPlayer" % anim_name, true)
+		# If no dialog animation, play default animation if enabled
+		elif animation_player and use_default_animation and default_animation != "" and animation_player.has_animation(default_animation):
+			animation_player.play(default_animation)
+			_log("Playing default animation: %s (no dialog animation)" % default_animation)
+		else:
+			_log("No animation played: AnimationPlayer=%s, index=%s, clips=%s, use_default=%s, default_anim=%s" % [
+				animation_player, current_message_index, animation_clips, use_default_animation, default_animation])
+
 	elif interaction_type == InteractionType.PROMPT and message_label:
 		message_label.text = messages[0] if messages.size() > 0 else ""
 		_log("Prompt updated, message=%s" % message_label.text)
 	else:
 		_log("WARNING: Cannot update display (invalid mode or null label)", true)
+
+func _on_animation_finished(anim_name: String) -> void:
+	# Play default animation when a dialog animation finishes, if enabled
+	if use_default_animation and default_animation != "" and animation_player and animation_player.has_animation(default_animation):
+		if anim_name != default_animation: # Avoid replaying if already playing default
+			animation_player.play(default_animation)
+			_log("Animation '%s' finished, playing default animation: %s" % [anim_name, default_animation])
+	else:
+		_log("No default animation played after '%s' finished: use_default=%s, default_anim=%s" % [
+			anim_name, use_default_animation, default_animation])
+
+func update_messages(new_messages: Array[String], update_display: bool = true) -> void:
+	# Append new messages to the existing messages array
+	if new_messages.size() > 0:
+		
+		messages.append_array(new_messages.duplicate())
+		_log("Appended messages: %s, total messages=%s" % [new_messages, messages])
+		if update_display:
+			# Only update display if current_message_index is invalid
+			if current_message_index >= messages.size():
+				current_message_index = clamp(current_message_index, 0, messages.size() - 1)
+				_update_display()
+			else:
+				current_message_index = original_message_size # Set to first appended message
+				_update_display()
+	else:
+		_log("WARNING: Cannot append messages; new_messages is empty", true)
+
+func revert_messages(original_messages: Array[String]) -> void:
+	# Revert to original messages
+	messages = original_messages.duplicate()
+	# Adjust current_message_index if it exceeds new size
+	current_message_index = clamp(current_message_index, 0, messages.size() - 1)
+	_log("Reverted messages: %s, current_message_index=%s" % [messages, current_message_index])
+	_update_display()
 
 func _log(message: String, is_error: bool = false) -> void:
 	# Log messages if logging is enabled
