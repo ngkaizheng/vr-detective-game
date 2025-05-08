@@ -58,7 +58,7 @@ size = Vector3(30, 5, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="XROrigin3D" parent="." instance=ExtResource("1_viwek")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5031, 0, 0.962902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5031, 0, 12.8308)
 
 [node name="MeshInstance3D(Plane)" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -143,7 +143,7 @@ transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114
 script = ExtResource("4_32dhj")
 
 [node name="Scissor_Pickable2" parent="CrimeScene" groups=["Scissors"] instance=ExtResource("4_nxj7t")]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -23.5688, 0.0565826, -1.67167)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -23.5688, 0.0565826, 13.3893)
 script = ExtResource("4_32dhj")
 
 [node name="Viewport2Din3D" parent="CrimeScene" instance=ExtResource("10_g5n14")]

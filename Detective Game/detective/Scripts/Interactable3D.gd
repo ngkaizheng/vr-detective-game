@@ -214,7 +214,7 @@ func _on_animation_finished(anim_name: String) -> void:
 func update_messages(new_messages: Array[String], update_display: bool = true) -> void:
 	# Append new messages to the existing messages array
 	if new_messages.size() > 0:
-		
+		var old_messages_size = messages.size();
 		messages.append_array(new_messages.duplicate())
 		_log("Appended messages: %s, total messages=%s" % [new_messages, messages])
 		if update_display:
@@ -223,7 +223,7 @@ func update_messages(new_messages: Array[String], update_display: bool = true) -
 				current_message_index = clamp(current_message_index, 0, messages.size() - 1)
 				_update_display()
 			else:
-				current_message_index = original_message_size # Set to first appended message
+				current_message_index = old_messages_size # Set to first appended message
 				_update_display()
 	else:
 		_log("WARNING: Cannot append messages; new_messages is empty", true)
