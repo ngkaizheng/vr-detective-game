@@ -16,6 +16,8 @@ extends Node3D
 var original_messages: Array[String] = []
 ## Track appended messages to remove on exit
 var appended_messages: Array[String] = []
+## Track if messages have been updated
+var has_updated_messages: bool = false
 
 func _ready() -> void:
 	# Initialize node references and signals
@@ -39,6 +41,11 @@ func _ready() -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	_log("Body entered detection area, body=%s" % body)
 	
+	# Check if messages have already been updated
+	if has_updated_messages:
+		_log("Messages already updated for group '%s', skipping" % collision_group)
+		return
+
 	# Check if the body or its parent is in the collision group
 	var current_node = body
 	while current_node:
@@ -48,6 +55,7 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 				original_messages = interactable.messages.duplicate() # Backup current messages
 				appended_messages = modified_messages.duplicate() # Track appended messages
 				interactable.update_messages(modified_messages, true) # Append without updating display
+				has_updated_messages = true # Mark as updated
 				_log("Appended messages to Interactable3D: %s" % modified_messages)
 			else:
 				_log("ERROR: Cannot update messages; invalid interactable", true)
@@ -79,6 +87,6 @@ func _log(message: String, is_error: bool = false) -> void:
 	# Log messages if logging is enabled
 	if enable_logging:
 		if is_error:
-			push_warning("NewScriptToDetect: %s" % message)
+			push_warning("DetectCollisionWithItem: %s" % message)
 		else:
-			print("NewScriptToDetect: %s" % message)
+			print("DetectCollisionWithItem: %s" % message)
