@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://h4rwn1c7ifyw"]
+
+[ext_resource type="PackedScene" uid="uid://b0mru3mewakbr" path="res://Detective Game/detective/Assets/Detective-9-5/priv_investigator.gltf" id="1_n2skb"]
+[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="2_jde5r"]
+[ext_resource type="Script" uid="uid://b680pgrb4wqiv" path="res://Detective Game/detective/Scripts/Interactable3D.gd" id="2_os7td"]
+[ext_resource type="PackedScene" uid="uid://ix5hheaueuqp" path="res://Detective Game/detective/Prefab/DialogUI.tscn" id="3_os7td"]
+[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="4_mc6ay"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_raoeg"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_7rybi"]
+viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qlucc"]
+resource_local_to_scene = true
+size = Vector2(1280, 720)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mc6ay"]
+viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jde5r"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_mc6ay")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ily7c"]
+resource_local_to_scene = true
+size = Vector3(1280, 720, 0.02)
+
+[node name="AuxScene" instance=ExtResource("1_n2skb")]
+script = ExtResource("2_os7td")
+messages = Array[String](["Interact to proceed!", "2", "3"])
+
+[node name="Node" parent="." index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.003, 0, -0.447)
+
+[node name="Skeleton3D" parent="Node" index="0"]
+bones/0/position = Vector3(-0.0754671, 84.4874, -0.380366)
+bones/0/rotation = Quaternion(-0.00902862, -0.0078735, -0.00823744, 0.999894)
+bones/2/rotation = Quaternion(-0.0323231, -0.000323621, -0.0043256, 0.999468)
+bones/4/rotation = Quaternion(0.0256612, -0.00167036, -0.000727066, 0.999669)
+bones/6/rotation = Quaternion(0.0256608, -0.00169689, -0.000739535, 0.999669)
+bones/11/rotation = Quaternion(0.0279028, -0.0092704, 0.00820015, 0.999534)
+bones/18/rotation = Quaternion(-0.0691936, -0.0335324, -0.0030562, 0.997035)
+bones/27/rotation = Quaternion(-0.639003, -0.350672, 0.578833, -0.36559)
+bones/28/rotation = Quaternion(0.374453, -0.0192053, -0.0211576, 0.926806)
+bones/31/rotation = Quaternion(0.0225108, -0.00714228, 0.21841, 0.975571)
+bones/34/rotation = Quaternion(0.0502318, 0.261048, 0.0676219, 0.961643)
+bones/37/rotation = Quaternion(0.136979, -0.393778, -0.102204, 0.903178)
+bones/39/rotation = Quaternion(0.594609, -0.0625212, 0.191113, 0.778464)
+bones/40/rotation = Quaternion(-0.347952, -0.028891, -0.212389, 0.912681)
+bones/42/rotation = Quaternion(0.65392, -0.340481, 0.56995, 0.362794)
+bones/44/rotation = Quaternion(0.385694, 0.00408694, 0.0160284, 0.922478)
+bones/47/rotation = Quaternion(0.0216424, 0.00678993, -0.20651, 0.978181)
+bones/50/rotation = Quaternion(0.0739772, 0.105576, -0.0113235, 0.991591)
+bones/53/rotation = Quaternion(0.176918, -0.00432747, 0.0414677, 0.983342)
+bones/55/rotation = Quaternion(-0.0565938, -0.00641252, 0.1321, 0.989599)
+bones/56/rotation = Quaternion(0.0125343, -0.0473979, 0.174035, 0.983518)
+bones/58/rotation = Quaternion(0.124587, 0.0734952, 0.983815, -0.105755)
+bones/61/rotation = Quaternion(-0.243072, -0.0735311, 0.00338444, 0.967211)
+bones/65/rotation = Quaternion(0.612511, -0.175342, -0.0328167, 0.77007)
+bones/68/rotation = Quaternion(0.254376, -0.0551382, 0.0145125, 0.965423)
+bones/72/rotation = Quaternion(-0.120638, 0.0847483, 0.984999, 0.0896683)
+bones/76/rotation = Quaternion(-0.226571, -0.0016163, 0.015946, 0.973863)
+bones/80/rotation = Quaternion(0.606574, 0.12058, 0.029081, 0.785292)
+bones/83/rotation = Quaternion(0.258445, 0.0585781, -0.015693, 0.964121)
+
+[node name="ProximityArea" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProximityArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_raoeg")
+
+[node name="Prompt" type="Label3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11754, 0.254396)
+visible = false
+text = "Hey, Come here."
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.069851, 1.11863, -0.00349915)
+billboard = 2
+texture = SubResource("ViewportTexture_7rybi")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="Sprite3D" index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("2_jde5r")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("3_os7td")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DetetiveUI.gd")
+
+[node name="Viewport" type="SubViewport" parent="Sprite3D/Viewport2DIn3D" index="0"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
+visible = false
+mesh = SubResource("QuadMesh_qlucc")
+surface_material_override/0 = SubResource("StandardMaterial3D_jde5r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("4_mc6ay")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Viewport2DIn3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_ily7c")

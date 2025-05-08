@@ -1,0 +1,19 @@
+[gd_resource type="BoxMesh" load_steps=6 format=3 uid="uid://bs6wll3ae6mn6"]
+
+[ext_resource type="Texture2D" uid="uid://d3sishvbwrkko" path="res://Detective Game/detective/Assets/Rock_Floor/textures/rock_tile_floor_diff_1k.jpg" id="1_7eb8q"]
+[ext_resource type="Texture2D" uid="uid://bl71vj2vk5561" path="res://Detective Game/detective/Assets/Rock_Floor/textures/rock_tile_floor_disp_1k.png" id="2_6u50b"]
+[ext_resource type="Texture2D" uid="uid://dinmtcunua637" path="res://Detective Game/detective/Assets/Rock_Floor/textures/rock_tile_floor_nor_gl_1k.jpg" id="3_5kng5"]
+[ext_resource type="Texture2D" uid="uid://bxc53d8kfuiiy" path="res://Detective Game/detective/Assets/Rock_Floor/textures/rock_tile_floor_rough_1k.jpg" id="4_g1ce0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2lgd"]
+albedo_texture = ExtResource("1_7eb8q")
+roughness_texture = ExtResource("4_g1ce0")
+normal_enabled = true
+normal_texture = ExtResource("3_5kng5")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_6u50b")
+uv1_triplanar = true
+
+[resource]
+material = SubResource("StandardMaterial3D_k2lgd")
+size = Vector3(30, 5, 1)

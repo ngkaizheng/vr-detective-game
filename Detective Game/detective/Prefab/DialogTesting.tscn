@@ -40,7 +40,7 @@ viewport_size = Vector2(1280, 720)
 alpha_scissor_threshold = 0.25
 unshaded = true
 filter = true
-scene_properties_keys = PackedStringArray()
+scene_properties_keys = PackedStringArray("DetetiveUI.gd")
 
 [node name="Viewport" type="SubViewport" parent="Viewport2Din3D"]
 disable_3d = true
