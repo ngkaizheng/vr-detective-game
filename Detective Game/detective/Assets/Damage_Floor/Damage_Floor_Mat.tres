@@ -17,4 +17,4 @@ uv1_scale = Vector3(3, 3, 3)
 [resource]
 lightmap_size_hint = Vector2i(304, 266)
 material = SubResource("StandardMaterial3D_dule7")
-size = Vector3(10, 1, 50)
+size = Vector3(15, 1, 50)

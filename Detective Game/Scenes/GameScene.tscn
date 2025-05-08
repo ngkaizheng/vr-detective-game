@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=32 format=3 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
 [ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
@@ -7,12 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dtirdk6p2v70r" path="res://Detective Game/detective/Assets/Blood/Blood Spray 8.png" id="5_gwd0x"]
 [ext_resource type="Texture2D" uid="uid://k0eddswi2kon" path="res://Detective Game/detective/Assets/Blood/Bloody Footprints 1.png" id="5_qvn0q"]
 [ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="6_2bdsp"]
-[ext_resource type="PackedScene" uid="uid://dmm7cmme7pgs8" path="res://Detective Game/detective/Prefab/idle_detective.tscn" id="10_d6ov1"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="10_g5n14"]
-[ext_resource type="Script" uid="uid://ydpjpogf2qst" path="res://Detective Game/detective/Scripts/detective.gd" id="10_hi3gy"]
 [ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="11_1f867"]
-[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_kn78k"]
-[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="13_d6ov1"]
 [ext_resource type="PackedScene" uid="uid://h4rwn1c7ifyw" path="res://Detective Game/detective/Assets/Detective-9-5/Detective-9-5.tscn" id="14_od06o"]
 [ext_resource type="PackedScene" uid="uid://bwkv3q0fvapaq" path="res://scenes/teleport_demo/objects/teleport_area_start.tscn" id="14_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://cd644gck0s6q1" path="res://Detective Game/detective/Assets/Damage_Floor/Damage_Floor_Mat.tres" id="15_3f441"]
@@ -20,7 +16,7 @@
 [ext_resource type="Script" uid="uid://vexjc7jg70gn" path="res://addons/godot-xr-tools/objects/teleport_area.gd" id="15_o0gwd"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
 [ext_resource type="PackedScene" uid="uid://2j2ufl3svgcl" path="res://scenes/teleport_demo/objects/teleport_area_end.tscn" id="16_o0gwd"]
-[ext_resource type="PackedScene" uid="uid://ix5hheaueuqp" path="res://Detective Game/detective/Prefab/DialogUI.tscn" id="18_od06o"]
+[ext_resource type="Script" uid="uid://cy8dl8kcu5xgi" path="res://Detective Game/detective/Scripts/GameController.gd" id="19_6j4oe"]
 [ext_resource type="BoxMesh" uid="uid://u1wapv31hxwo" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh.tres" id="19_l0usc"]
 [ext_resource type="BoxMesh" uid="uid://bs6wll3ae6mn6" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_2.tres" id="20_dudoj"]
 
@@ -49,27 +45,6 @@ size = Vector3(0.229126, 3.59619, 5.43921)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_l0usc"]
 height = 2.8
 radius = 0.9
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_kn78k"]
-viewport_path = NodePath("InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D/Viewport")
-
-[sub_resource type="QuadMesh" id="QuadMesh_d6ov1"]
-resource_local_to_scene = true
-size = Vector2(1280, 720)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_od06o"]
-viewport_path = NodePath("InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D/Viewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0usc"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_od06o")
-texture_filter = 1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_swrli"]
-resource_local_to_scene = true
-size = Vector3(1280, 720, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmm7h"]
 size = Vector3(15, 1, 50)
@@ -223,50 +198,7 @@ shape = SubResource("CylinderShape3D_l0usc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56366, 0.1, 0)
 
 [node name="Detective_New" parent="InterrogationRoom" instance=ExtResource("14_od06o")]
-transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.0489, 0, 5.50775)
-
-[node name="Detective" parent="InterrogationRoom" instance=ExtResource("10_d6ov1")]
-transform = Transform3D(-0.596575, 0, 0.802558, 0, 1, 0, -0.802558, 0, -0.596575, -14.0489, 0, 18.3795)
-script = ExtResource("10_hi3gy")
-
-[node name="Sprite3D" type="Sprite3D" parent="InterrogationRoom/Detective"]
-transform = Transform3D(0.0993116, 0, -0.0117139, 0, 0.1, 0, 0.0117139, 0, 0.0993116, -0.0416021, 1.30659, 0.286761)
-billboard = 2
-texture = SubResource("ViewportTexture_kn78k")
-
-[node name="Viewport2DIn3D" type="Node3D" parent="InterrogationRoom/Detective/Sprite3D"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
-script = ExtResource("11_kn78k")
-screen_size = Vector2(1280, 720)
-scene = ExtResource("18_od06o")
-viewport_size = Vector2(1280, 720)
-alpha_scissor_threshold = 0.25
-unshaded = true
-filter = true
-scene_properties_keys = PackedStringArray("DialogUI.gd")
-
-[node name="Viewport" type="SubViewport" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
-disable_3d = true
-transparent_bg = true
-gui_embed_subwindows = true
-size = Vector2i(1280, 720)
-render_target_update_mode = 1
-
-[node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
-visible = false
-mesh = SubResource("QuadMesh_d6ov1")
-surface_material_override/0 = SubResource("StandardMaterial3D_l0usc")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D"]
-collision_layer = 5242881
-collision_mask = 0
-script = ExtResource("13_d6ov1")
-screen_size = Vector2(1280, 720)
-viewport_size = Vector2(1280, 720)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/Detective/Sprite3D/Viewport2DIn3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
-shape = SubResource("BoxShape3D_swrli")
+transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.049, 0, 18.38)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -331,3 +263,7 @@ mesh = ExtResource("20_dudoj")
 transform = Transform3D(1, 0, 0, 0, 0.994874, 0.101126, 0, -0.101126, 0.994874, -12.1742, 2.21218, 14.5609)
 spot_range = 100.0
 spot_attenuation = 0.58
+
+[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("detective")]
+script = ExtResource("19_6j4oe")
+detective = NodePath("../InterrogationRoom/Detective_New")

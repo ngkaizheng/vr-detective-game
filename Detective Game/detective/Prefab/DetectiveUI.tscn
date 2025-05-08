@@ -6,7 +6,6 @@
 script = ExtResource("1_vjfdt")
 
 [node name="Control_Dialog" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +88,7 @@ layout_mode = 2
 text = "Press Trigger To Interact"
 
 [node name="Control_Identify" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -169,6 +169,7 @@ theme_override_font_sizes/font_size = 40
 text = "Gwen (Tailor)"
 
 [node name="Control_Confirmation" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

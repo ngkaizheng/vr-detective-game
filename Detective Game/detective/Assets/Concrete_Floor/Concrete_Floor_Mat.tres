@@ -17,4 +17,4 @@ uv1_triplanar_sharpness = 0.000124533
 
 [resource]
 material = SubResource("StandardMaterial3D_ymaw5")
-size = Vector3(10, 1, 50)
+size = Vector3(15, 1, 50)
