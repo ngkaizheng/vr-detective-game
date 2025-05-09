@@ -1,0 +1,116 @@
+# Blender MTL File: 'None'
+# Material Count: 10
+
+newmtl BaseTexture.000
+Ns 90.196088
+Ka 1.000000 1.000000 1.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd clothes.png
+map_d C:\\Users\\igorv\\OneDrive\\Área de Trabalho\\10 COMPLETO\\modelos blender\\cd.png
+
+newmtl DiffuseMap
+Ns 92.156872
+Ka 1.000000 1.000000 1.000000
+Kd 0.512000 0.512000 0.512000
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd clothes.png
+
+newmtl DiffuseMap.001
+Ns 90.196088
+Ka 1.000000 1.000000 1.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd clothes.png
+map_d C:\\Users\\igorv\\OneDrive\\Área de Trabalho\\10 COMPLETO\\modelos blender\\cd.png
+
+newmtl DiffuseMap.006
+Ns 500.132237
+Ka 1.000000 1.000000 1.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd clothes.png
+map_d C:\\Users\\igorv\\OneDrive\\Área de Trabalho\\10 COMPLETO\\modelos blender\\cd.png
+
+newmtl DiffuseMap.007
+Ns 90.196088
+Ka 1.000000 1.000000 1.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd clothes.png
+map_d C:\\Users\\igorv\\OneDrive\\Área de Trabalho\\10 COMPLETO\\modelos blender\\cd.png
+
+newmtl Hair_D
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.464000 0.464000 0.464000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd Hair_D2.png
+
+newmtl Material.003
+Ns 90.196088
+Ka 1.000000 1.000000 1.000000
+Kd 0.409600 0.409600 0.409600
+Ks 0.069061 0.069061 0.069061
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd clothes.png
+
+newmtl caraunchar
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.464000 0.464000 0.464000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tennant_face.png
+
+newmtl head_d
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.440000 0.440000 0.440000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tennant_face.png
+
+newmtl head_d.001
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.440000 0.440000 0.440000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tennant_face.png

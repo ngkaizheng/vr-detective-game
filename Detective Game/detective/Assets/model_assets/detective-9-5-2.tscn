@@ -1,0 +1,132 @@
+[gd_scene load_steps=14 format=3 uid="uid://cli86dcjwni2f"]
+
+[ext_resource type="PackedScene" uid="uid://dodclqpjqaub" path="res://Detective Game/detective/Assets/model_assets/det.gltf" id="1_1kr14"]
+[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="2_dyr4r"]
+[ext_resource type="Script" uid="uid://b680pgrb4wqiv" path="res://Detective Game/detective/Scripts/Interactable3D.gd" id="2_jddub"]
+[ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="3_jddub"]
+[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="4_3o277"]
+[ext_resource type="Script" uid="uid://cednya0pgsg8u" path="res://Detective Game/detective/Scripts/DetectCollisionWithItem.gd" id="5_eaun1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6uban"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l0hj7"]
+viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4svcn"]
+resource_local_to_scene = true
+size = Vector2(1280, 720)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dyr4r"]
+viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jddub"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_dyr4r")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8v2kj"]
+resource_local_to_scene = true
+size = Vector3(1280, 720, 0.02)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31vb4"]
+size = Vector3(6, 6, 6)
+
+[node name="Detective" instance=ExtResource("1_1kr14")]
+script = ExtResource("2_jddub")
+messages = Array[String](["Interact to proceed!", "123", "456"])
+animation_clips = Array[String](["CatwalkIdle02", "Talking", "Talking", "Talking", "Talking", "Talking", "Talking", "Talking"])
+default_animation = "CatwalkIdle02"
+use_default_animation = true
+
+[node name="Node" parent="." index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Node" index="0"]
+bones/0/position = Vector3(-0.151784, 85.9632, -0.314877)
+bones/0/rotation = Quaternion(-0.0328766, 0.0255844, -0.01583, 0.999007)
+bones/2/rotation = Quaternion(-0.0193463, 0.0176524, -0.0149814, 0.999545)
+bones/4/rotation = Quaternion(0.0279352, 0.00119267, 0.00908542, 0.999568)
+bones/6/rotation = Quaternion(0.0278996, 0.0013266, 0.00917571, 0.999568)
+bones/11/rotation = Quaternion(0.000614978, -0.00731398, -0.00689789, 0.999949)
+bones/18/rotation = Quaternion(0.00764248, -0.072106, 0.0360761, 0.996715)
+bones/27/rotation = Quaternion(-0.587804, -0.386297, 0.615059, -0.35632)
+bones/28/rotation = Quaternion(0.44936, 0.126798, 0.105345, 0.878009)
+bones/31/rotation = Quaternion(0.00973524, -0.0072881, 0.0944571, 0.995455)
+bones/34/rotation = Quaternion(0.0350218, -0.0820989, -0.0169165, 0.995865)
+bones/37/rotation = Quaternion(0.159279, -0.391687, -0.118842, 0.898381)
+bones/39/rotation = Quaternion(0.619055, -0.11084, 0.134377, 0.765786)
+bones/40/rotation = Quaternion(-0.316686, -0.0943225, -0.25426, 0.908936)
+bones/42/rotation = Quaternion(0.574073, -0.416939, 0.574987, 0.407421)
+bones/44/rotation = Quaternion(0.497274, -0.064693, -0.0376561, 0.864358)
+bones/47/rotation = Quaternion(0.00969327, 0.00691122, -0.0924948, 0.995642)
+bones/50/rotation = Quaternion(0.0592709, 0.0929159, 0.00135454, 0.993907)
+bones/53/rotation = Quaternion(0.159735, -0.00434127, 0.0374401, 0.98644)
+bones/55/rotation = Quaternion(0.0309411, -0.0191683, 0.151023, 0.98786)
+bones/56/rotation = Quaternion(0.0807753, -0.0808975, 0.185184, 0.976032)
+bones/58/rotation = Quaternion(0.106012, 0.0432159, 0.992537, -0.0419939)
+bones/61/rotation = Quaternion(-0.195804, -0.0825857, 0.0529694, 0.975723)
+bones/65/rotation = Quaternion(0.57682, -0.274536, 0.0420387, 0.768206)
+bones/68/rotation = Quaternion(0.290245, -0.062406, 0.0102098, 0.954861)
+bones/72/rotation = Quaternion(-0.0371361, 0.0344271, 0.99861, 0.0146534)
+bones/76/rotation = Quaternion(-0.138414, 0.0873392, -0.0421362, 0.985616)
+bones/80/rotation = Quaternion(0.534087, 0.263939, -0.0530448, 0.80142)
+bones/83/rotation = Quaternion(0.291003, 0.0653205, -0.011675, 0.954418)
+
+[node name="AnimationPlayer" parent="." index="1"]
+blend_times = [&"CatwalkIdle02", &"CatwalkIdle02", 0.5, &"CatwalkIdle02", &"Talking", 0.5, &"CatwalkIdle02", &"mixamo_com", 0.5, &"Talking", &"CatwalkIdle02", 0.5, &"Talking", &"Talking", 0.5, &"Talking", &"mixamo_com", 0.5]
+
+[node name="ProximityArea" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProximityArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6uban")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.069851, 1.11863, 0.37506)
+texture = SubResource("ViewportTexture_l0hj7")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="Sprite3D" index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("2_dyr4r")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("3_jddub")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DialogUI_Detective.gd")
+
+[node name="Viewport" type="SubViewport" parent="Sprite3D/Viewport2DIn3D" index="0"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
+visible = false
+mesh = SubResource("QuadMesh_4svcn")
+surface_material_override/0 = SubResource("StandardMaterial3D_jddub")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("4_3o277")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/Viewport2DIn3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_8v2kj")
+
+[node name="DetectCollisionWithItem" type="Node3D" parent="." index="4"]
+script = ExtResource("5_eaun1")
+modified_messages = Array[String](["Scissors detected!", "HAHA", "HOHO"])
+
+[node name="Area3D" type="Area3D" parent="DetectCollisionWithItem" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectCollisionWithItem/Area3D" index="0"]
+shape = SubResource("BoxShape3D_31vb4")

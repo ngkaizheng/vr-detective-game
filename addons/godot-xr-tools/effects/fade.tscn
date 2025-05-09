@@ -10,12 +10,11 @@ size = Vector2(2, 2)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjgy8"]
 render_priority = 50
 shader = ExtResource("1_tjen8")
-shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(0, 0, 0, 0)
 
 [node name="Fade" type="Node3D"]
 script = ExtResource("1_6667f")
 
 [node name="FadeMesh" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("QuadMesh_aqp6r")
 surface_material_override/0 = SubResource("ShaderMaterial_xjgy8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=48 format=3 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
 [ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
@@ -9,16 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="6_2bdsp"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="10_g5n14"]
 [ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="11_1f867"]
+[ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_kn78k"]
+[ext_resource type="Script" uid="uid://bbjheis6wpoh4" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d_body.gd" id="13_d6ov1"]
+[ext_resource type="PackedScene" uid="uid://cd0iixbtx4bh5" path="res://Detective Game/detective/Prefab/HomeUI.tscn" id="14_l0usc"]
 [ext_resource type="PackedScene" uid="uid://h4rwn1c7ifyw" path="res://Detective Game/detective/Assets/Detective-9-5/Detective-9-5.tscn" id="14_od06o"]
 [ext_resource type="PackedScene" uid="uid://bwkv3q0fvapaq" path="res://scenes/teleport_demo/objects/teleport_area_start.tscn" id="14_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://cd644gck0s6q1" path="res://Detective Game/detective/Assets/Damage_Floor/Damage_Floor_Mat.tres" id="15_3f441"]
 [ext_resource type="PackedScene" uid="uid://b4plexg81v7vy" path="res://Detective Game/detective/Assets/Interrogation-Room-Modified/interrogation_room_modified_door.tscn" id="15_hi3gy"]
-[ext_resource type="Script" uid="uid://vexjc7jg70gn" path="res://addons/godot-xr-tools/objects/teleport_area.gd" id="15_o0gwd"]
+[ext_resource type="PackedScene" uid="uid://cli86dcjwni2f" path="res://Detective Game/detective/Assets/model_assets/detective-9-5-2.tscn" id="15_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
 [ext_resource type="PackedScene" uid="uid://2j2ufl3svgcl" path="res://scenes/teleport_demo/objects/teleport_area_end.tscn" id="16_o0gwd"]
+[ext_resource type="Script" uid="uid://bmvprn305j6yb" path="res://Detective Game/detective/Scripts/teleport_area_fade.gd" id="17_l0usc"]
 [ext_resource type="Script" uid="uid://cy8dl8kcu5xgi" path="res://Detective Game/detective/Scripts/GameController.gd" id="19_6j4oe"]
 [ext_resource type="BoxMesh" uid="uid://u1wapv31hxwo" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh.tres" id="19_l0usc"]
 [ext_resource type="BoxMesh" uid="uid://bs6wll3ae6mn6" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_2.tres" id="20_dudoj"]
+[ext_resource type="Script" uid="uid://bv8ad63hu540p" path="res://Detective Game/detective/Scripts/FadeController.gd" id="26_6rgpa"]
+[ext_resource type="BoxMesh" uid="uid://cpb2mn2x06e8i" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_home.tres" id="26_vmm7h"]
+[ext_resource type="PackedScene" uid="uid://csmv7xua18g6v" path="res://Detective Game/detective/Prefab/EndingUI.tscn" id="26_ymaw5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f24su"]
 
@@ -46,6 +53,27 @@ size = Vector3(0.229126, 3.59619, 5.43921)
 height = 2.8
 radius = 0.9
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_6rgpa"]
+viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="QuadMesh" id="QuadMesh_od06o"]
+resource_local_to_scene = true
+size = Vector2(1280, 720)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vmm7h"]
+viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rgpa"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_vmm7h")
+texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6rgpa"]
+resource_local_to_scene = true
+size = Vector3(1280, 720, 0.02)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmm7h"]
 size = Vector3(15, 1, 50)
 
@@ -55,9 +83,25 @@ size = Vector3(15, 5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_75pp6"]
 size = Vector3(30, 5, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hyni"]
+size = Vector3(7, 5, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dimmv"]
+viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2hyni"]
+viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmm7h"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_2hyni")
+texture_filter = 1
+
 [node name="Node3D" type="Node3D"]
 
-[node name="XROrigin3D" parent="." instance=ExtResource("1_viwek")]
+[node name="XROrigin3D" parent="." groups=["xr_origin"] instance=ExtResource("1_viwek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5031, 0, 12.8308)
 
 [node name="MeshInstance3D(Plane)" type="MeshInstance3D" parent="."]
@@ -157,13 +201,13 @@ scene_properties_keys = PackedStringArray("DialogUI_Detective.gd")
 [node name="TeleportAreaStart" parent="CrimeScene" instance=ExtResource("14_pb52e")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.86554, 0, -0.941518)
 
-[node name="XRToolsTeleportArea2" type="Area3D" parent="CrimeScene/TeleportAreaStart" node_paths=PackedStringArray("target")]
+[node name="XRToolsTeleportArea" type="Area3D" parent="CrimeScene/TeleportAreaStart" node_paths=PackedStringArray("target")]
 collision_layer = 0
 collision_mask = 524288
-script = ExtResource("15_o0gwd")
+script = ExtResource("17_l0usc")
 target = NodePath("../../../InterrogationRoom/TeleportAreaEnd/TeleportTarget")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CrimeScene/TeleportAreaStart/XRToolsTeleportArea2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrimeScene/TeleportAreaStart/XRToolsTeleportArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_l0usc")
 
@@ -181,16 +225,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.6, 6.5)
 [node name="interrogation_room_modified_door3" parent="InterrogationRoom" instance=ExtResource("15_hi3gy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.6, 13)
 
+[node name="TeleportAreaToHome" parent="InterrogationRoom" instance=ExtResource("14_pb52e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0666, 0, 8.21553)
+
+[node name="XRToolsTeleportArea" type="Area3D" parent="InterrogationRoom/TeleportAreaToHome" node_paths=PackedStringArray("target")]
+collision_layer = 0
+collision_mask = 524288
+script = ExtResource("17_l0usc")
+target = NodePath("../../../Environment_Home/TeleportAreaHome(Ending)/TeleportTarget")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaToHome/XRToolsTeleportArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_l0usc")
+
+[node name="TeleportTarget" type="Marker3D" parent="InterrogationRoom/TeleportAreaToHome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82369, 0.1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="InterrogationRoom/TeleportAreaToHome"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.2, 0)
+billboard = 2
+texture = SubResource("ViewportTexture_6rgpa")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("11_kn78k")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("14_l0usc")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DialogUI.gd")
+
+[node name="Viewport" type="SubViewport" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
+visible = false
+mesh = SubResource("QuadMesh_od06o")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rgpa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("13_d6ov1")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_6rgpa")
+disabled = true
+
 [node name="TeleportAreaEnd" parent="InterrogationRoom" instance=ExtResource("16_o0gwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80077, 0, 18.4959)
 
-[node name="XRToolsTeleportArea2" type="Area3D" parent="InterrogationRoom/TeleportAreaEnd" node_paths=PackedStringArray("target")]
+[node name="XRToolsTeleportArea" type="Area3D" parent="InterrogationRoom/TeleportAreaEnd" node_paths=PackedStringArray("target")]
 collision_layer = 0
 collision_mask = 524288
-script = ExtResource("15_o0gwd")
+script = ExtResource("17_l0usc")
 target = NodePath("../../../CrimeScene/TeleportAreaStart/TeleportTarget")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaEnd/XRToolsTeleportArea2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaEnd/XRToolsTeleportArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_l0usc")
 
@@ -198,63 +298,67 @@ shape = SubResource("CylinderShape3D_l0usc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56366, 0.1, 0)
 
 [node name="Detective_New" parent="InterrogationRoom" instance=ExtResource("14_od06o")]
-transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.049, 0, 18.38)
+transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.049, 0, 24.7098)
+visible = false
 
-[node name="Environment" type="Node3D" parent="."]
+[node name="Detective" parent="InterrogationRoom" instance=ExtResource("15_pb52e")]
+transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.049, 0, 18.4672)
 
-[node name="Floor" type="StaticBody3D" parent="Environment"]
+[node name="Environment_IntergorationRoom" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.5, 10)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Floor"]
 shape = SubResource("BoxShape3D_vmm7h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Floor/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Floor/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = ExtResource("15_3f441")
 
-[node name="Roof" type="StaticBody3D" parent="Environment"]
+[node name="Roof" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.99638, 3.69429, 9.99207)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Roof"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Roof"]
 shape = SubResource("BoxShape3D_vmm7h")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Roof/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Roof/CollisionShape3D"]
 mesh = ExtResource("16_6j4oe")
 
-[node name="Wall_Side1" type="StaticBody3D" parent="Environment"]
+[node name="Wall_Side1" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8, 2.5, -2.95)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall_Side1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Wall_Side1"]
 shape = SubResource("BoxShape3D_e76hv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall_Side1/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Wall_Side1/CollisionShape3D"]
 mesh = ExtResource("19_l0usc")
 
-[node name="Wall_Side2" type="StaticBody3D" parent="Environment"]
+[node name="Wall_Side2" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 20)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall_Side2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Wall_Side2"]
 shape = SubResource("BoxShape3D_e76hv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall_Side2/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Wall_Side2/CollisionShape3D"]
 mesh = ExtResource("19_l0usc")
 
-[node name="Wall_Long1" type="StaticBody3D" parent="Environment"]
+[node name="Wall_Long1" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.5, 2.5, 12.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall_Long1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Wall_Long1"]
 shape = SubResource("BoxShape3D_75pp6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall_Long1/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Wall_Long1/CollisionShape3D"]
 mesh = ExtResource("20_dudoj")
 
-[node name="Wall_Long2" type="StaticBody3D" parent="Environment"]
+[node name="Wall_Long2" type="StaticBody3D" parent="Environment_IntergorationRoom"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.75, 2.5, 12.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Wall_Long2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_IntergorationRoom/Wall_Long2"]
 shape = SubResource("BoxShape3D_75pp6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Wall_Long2/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_IntergorationRoom/Wall_Long2/CollisionShape3D"]
 mesh = ExtResource("20_dudoj")
 
 [node name="Light" type="Node3D" parent="."]
@@ -264,6 +368,121 @@ transform = Transform3D(1, 0, 0, 0, 0.994874, 0.101126, 0, -0.101126, 0.994874, 
 spot_range = 100.0
 spot_attenuation = 0.58
 
-[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("detective")]
+[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("detective", "teleport", "ending_ui_sprite")]
 script = ExtResource("19_6j4oe")
-detective = NodePath("../InterrogationRoom/Detective_New")
+detective = NodePath("../InterrogationRoom/Detective")
+teleport = NodePath("../InterrogationRoom/TeleportAreaToHome")
+ending_ui_sprite = NodePath("../Environment_Home/Sprite3D")
+
+[node name="FadeController" type="Node3D" parent="."]
+script = ExtResource("26_6rgpa")
+
+[node name="Environment_Home" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.7032, 0, 11.6293)
+
+[node name="Floor" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -3.82137e-15, 4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0.5, 0.370701)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Floor"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Floor/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="Roof" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -3.82137e-15, 4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 5, 0.370701)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Roof"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Roof/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="Wall" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -3.6293)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="Wall4" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4.3707)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall4"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall4/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="Wall2" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 2.5, 0.370701)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall2"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall2/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="Wall3" type="StaticBody3D" parent="Environment_Home"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 2.5, 0.370701)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall3"]
+shape = SubResource("BoxShape3D_2hyni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall3/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = ExtResource("26_vmm7h")
+
+[node name="TeleportAreaHome(Ending)" parent="Environment_Home" instance=ExtResource("16_o0gwd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166443, 1, 3.1047)
+
+[node name="TeleportTarget" type="Marker3D" parent="Environment_Home/TeleportAreaHome(Ending)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56366, 0.1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment_Home"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 3.12188, -1.26032)
+pixel_size = 0.03
+billboard = 2
+texture = SubResource("ViewportTexture_dimmv")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="Environment_Home/Sprite3D"]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+script = ExtResource("11_kn78k")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("26_ymaw5")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DialogUI.gd")
+
+[node name="Viewport" type="SubViewport" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
+visible = false
+mesh = SubResource("QuadMesh_od06o")
+surface_material_override/0 = SubResource("StandardMaterial3D_vmm7h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("13_d6ov1")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_6rgpa")
+disabled = true

@@ -1,0 +1,188 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmv7xua18g6v"]
+
+[ext_resource type="Script" uid="uid://ljxk8nfwfi7c" path="res://Detective Game/detective/Scripts/DialogUI.gd" id="1_i6lrw"]
+[ext_resource type="Texture2D" uid="uid://d3sishvbwrkko" path="res://Detective Game/detective/Assets/Rock_Floor/textures/rock_tile_floor_diff_1k.jpg" id="2_lq8af"]
+
+[node name="DetectiveUi_CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_i6lrw")
+
+[node name="Control_Dialog" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control_Dialog"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.647059, 0.513726, 1, 1)
+
+[node name="Title" type="Label" parent="Control_Dialog/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_right = 500.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Ending"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="Control_Ending1" type="Control" parent="Control_Dialog/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Ending" type="Label" parent="Control_Dialog/ColorRect/Control_Ending1"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 70.0
+offset_right = 500.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Lily is the murderer, you got her. After all, lily was arrested and jail. "
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Dialog/ColorRect/Control_Ending1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -500.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control_Dialog/ColorRect/Control_Ending1/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_lq8af")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="Control_Dialog/ColorRect/Control_Ending1/MarginContainer"]
+layout_mode = 2
+
+[node name="Control_Ending2" type="Control" parent="Control_Dialog/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Ending" type="Label" parent="Control_Dialog/ColorRect/Control_Ending2"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 70.0
+offset_right = 500.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Ali is the murderer, you got her. After all, lily was arrested and jail. "
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Dialog/ColorRect/Control_Ending2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -500.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control_Dialog/ColorRect/Control_Ending2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_lq8af")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="Control_Dialog/ColorRect/Control_Ending2/MarginContainer"]
+layout_mode = 2
+
+[node name="Control_Ending3" type="Control" parent="Control_Dialog/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label_Ending" type="Label" parent="Control_Dialog/ColorRect/Control_Ending3"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 70.0
+offset_right = 500.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Papa  is the murderer, you got her. After all, lily was arrested and jail. "
+horizontal_alignment = 1
+autowrap_mode = 3
+justification_flags = 161
+
+[node name="MarginContainer" type="MarginContainer" parent="Control_Dialog/ColorRect/Control_Ending3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -500.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control_Dialog/ColorRect/Control_Ending3/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_lq8af")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="Control_Dialog/ColorRect/Control_Ending3/MarginContainer"]
+layout_mode = 2
