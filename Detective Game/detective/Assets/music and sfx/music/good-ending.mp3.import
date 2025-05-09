@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dr3c4oypqb0um"
+uid="uid://cven6ditkihut"
 path="res://.godot/imported/good-ending.mp3-b0c77e960493fd3dbb60c2f578c821b7.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/good-ending.mp3-b0c77e960493fd3dbb60c2f578c82
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

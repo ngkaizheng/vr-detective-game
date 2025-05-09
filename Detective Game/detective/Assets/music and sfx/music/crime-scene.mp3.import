@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpixxr873if2j"
+path="res://.godot/imported/crime-scene.mp3-a4aeb84ce9c196f18c8b214c51ddb371.mp3str"
+
+[deps]
+
+source_file="res://Detective Game/detective/Assets/music and sfx/music/crime-scene.mp3"
+dest_files=["res://.godot/imported/crime-scene.mp3-a4aeb84ce9c196f18c8b214c51ddb371.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
