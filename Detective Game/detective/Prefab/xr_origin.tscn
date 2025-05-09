@@ -53,6 +53,7 @@ laser_length = 1
 
 [node name="PlayerBody" parent="." groups=["player"] instance=ExtResource("6_qile6")]
 collision_layer = 524289
+player_height_max = 1.8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBody" groups=["player", "player_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

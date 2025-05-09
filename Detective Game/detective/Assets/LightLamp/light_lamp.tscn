@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://h48vvro31t5m"]
+
+[ext_resource type="PackedScene" uid="uid://b0bk3ovrp61ji" path="res://Detective Game/detective/Assets/LightLamp/light_lamp.glb" id="1_mjxpp"]
+
+[node name="light_lamp" instance=ExtResource("1_mjxpp")]
+
+[node name="defaultMaterial_006" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.0283689, 0.519673, -0.00991547)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0495901, -0.233403, -0.0251798)
+spot_range = 10.0
+spot_attenuation = 0.5
+spot_angle = 60.0

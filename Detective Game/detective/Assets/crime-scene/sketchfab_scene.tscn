@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo5q58oxp53xi"]
+[gd_scene load_steps=5 format=3 uid="uid://bo5q58oxp53xi"]
 
 [ext_resource type="PackedScene" uid="uid://cbmr67ng3mopw" path="res://Detective Game/detective/Assets/crime-scene/victorian_diorama.glb" id="1_21wte"]
 [ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="2_pxlht"]
+[ext_resource type="PackedScene" uid="uid://cobsw6b1cmawt" path="res://Detective Game/detective/Assets/crime-scene-wall/CrimeScene1FaceWall.glb" id="3_lwvj3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gw828"]
 
@@ -17,3 +18,21 @@ shape = SubResource("BoxShape3D_gw828")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0561676, -0.00771809)
 size = Vector3(1, 0.187, 1)
 texture_albedo = ExtResource("2_pxlht")
+
+[node name="CrimeScene1FaceWall" parent="." index="1" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2.56286)
+
+[node name="CrimeScene1FaceWall2" parent="." index="2" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(2.18557e-08, -3.78552e-08, -1, -0.866025, -0.5, 0, -0.5, 0.866025, -4.37114e-08, 0, 4.6, 0)
+
+[node name="CrimeScene1FaceWall3" parent="." index="3" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(2.18557e-08, 3.78552e-08, -1, 0.866025, -0.5, 0, -0.5, -0.866025, -4.37114e-08, 0, 4.6, 0)
+
+[node name="CrimeScene1FaceWall4" parent="." index="4" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.523, 3, 0)
+
+[node name="CrimeScene1FaceWall6" parent="." index="5" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56869, -0.011972, -0.964876)
+
+[node name="CrimeScene1FaceWall5" parent="." index="6" instance=ExtResource("3_lwvj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.523, 3, 0)
