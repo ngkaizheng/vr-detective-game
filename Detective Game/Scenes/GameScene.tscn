@@ -1,5 +1,6 @@
-[gd_scene load_steps=69 format=4 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=75 format=4 uid="uid://bpmluja1ksvqo"]
 
+[ext_resource type="Script" uid="uid://bqavdh5vrf7f1" path="res://scenes/demo_scene_base.gd" id="1_7ka8n"]
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
 [ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
 [ext_resource type="PackedScene" uid="uid://bo5q58oxp53xi" path="res://Detective Game/detective/Assets/crime-scene/sketchfab_scene.tscn" id="4_gwd0x"]
@@ -32,8 +33,10 @@
 [ext_resource type="Script" uid="uid://bv8ad63hu540p" path="res://Detective Game/detective/Scripts/FadeController.gd" id="26_6rgpa"]
 [ext_resource type="PackedScene" uid="uid://csmv7xua18g6v" path="res://Detective Game/detective/Prefab/EndingUI.tscn" id="26_ymaw5"]
 [ext_resource type="BoxMesh" uid="uid://2twhnnm8m3k4" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_ending.tres" id="31_mu56t"]
+[ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="33_7f5y2"]
 [ext_resource type="AudioStream" uid="uid://dpixxr873if2j" path="res://Detective Game/detective/Assets/music and sfx/music/crime-scene.mp3" id="33_25iwe"]
 [ext_resource type="AudioStream" uid="uid://dxfvfnpreo240" path="res://Detective Game/detective/Assets/music and sfx/music/main-menu.mp3" id="33_l1v5k"]
+[ext_resource type="PackedScene" uid="uid://cgoe2p84akn74" path="res://Detective Game/detective/Prefab/MainMenuTitleUI.tscn" id="34_7f5y2"]
 [ext_resource type="Script" uid="uid://c7giroyli87jb" path="res://Detective Game/detective/Scripts/AudioController.gd" id="34_25iwe"]
 [ext_resource type="AudioStream" uid="uid://cven6ditkihut" path="res://Detective Game/detective/Assets/music and sfx/music/good-ending.mp3" id="36_scweg"]
 [ext_resource type="AudioStream" uid="uid://bhj6gmvo6k0sh" path="res://Detective Game/detective/Assets/music and sfx/music/bad-end.mp3" id="37_7f5y2"]
@@ -71,14 +74,14 @@ viewport_path = NodePath("CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2
 resource_local_to_scene = true
 size = Vector2(1280, 720)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8x0sk"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i2ki3"]
 viewport_path = NodePath("CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25iwe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f5y2"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_8x0sk")
+albedo_texture = SubResource("ViewportTexture_i2ki3")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rgpa"]
@@ -92,27 +95,27 @@ loop = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_6rgpa"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_by88x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sogry"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ka8n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2ki3"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_by88x")
+albedo_texture = SubResource("ViewportTexture_sogry")
 texture_filter = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l1v5k"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7ka8n"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s6480"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scweg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfubk"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7ka8n")
+albedo_texture = SubResource("ViewportTexture_s6480")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmm7h"]
@@ -125,19 +128,32 @@ size = Vector3(15, 5, 1)
 size = Vector3(30, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2hyni"]
-size = Vector3(7, 5, 1)
+size = Vector3(9, 9, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dimmv"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7f5y2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_so12b"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f5y2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sogry"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7f5y2")
+albedo_texture = SubResource("ViewportTexture_so12b")
+texture_filter = 1
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rcx4d"]
+viewport_path = NodePath("Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lsp8j"]
+viewport_path = NodePath("Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D/Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcx4d"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_lsp8j")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2ki3"]
@@ -150,6 +166,7 @@ size = Vector3(5.019, 5, 5.7)
 size = Vector3(10, 10, 10)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_7ka8n")
 
 [node name="XROrigin3D" parent="." groups=["xr_origin"] instance=ExtResource("1_viwek")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5247, 0, 12.8308)
@@ -290,7 +307,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_25iwe")
+surface_material_override/0 = SubResource("StandardMaterial3D_7f5y2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -372,7 +389,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ka8n")
+surface_material_override/0 = SubResource("StandardMaterial3D_i2ki3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -428,7 +445,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_scweg")
+surface_material_override/0 = SubResource("StandardMaterial3D_tfubk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -547,6 +564,7 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -3.82137e-15, 4.37114e-08,
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Floor"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Floor/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
@@ -557,6 +575,7 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, -3.82137e-15, 4.37114e-08,
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Roof"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Roof/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
@@ -567,6 +586,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -3.6293)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
@@ -577,26 +597,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4.3707)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall4"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall4/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = ExtResource("31_mu56t")
 
 [node name="Wall2" type="StaticBody3D" parent="Environment_Home"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 2.5, 0.370701)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 2.5, 0.371)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall2"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall2/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 mesh = ExtResource("31_mu56t")
 
 [node name="Wall3" type="StaticBody3D" parent="Environment_Home"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 2.5, 0.370701)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2.5, 0.371)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Wall3"]
 shape = SubResource("BoxShape3D_2hyni")
+debug_color = Color(0.951616, 0, 0.562764, 0.42)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_Home/Wall3/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
@@ -635,7 +658,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_7f5y2")
+surface_material_override/0 = SubResource("StandardMaterial3D_sogry")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -645,6 +668,50 @@ screen_size = Vector2(1280, 720)
 viewport_size = Vector2(1280, 720)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
+shape = SubResource("BoxShape3D_6rgpa")
+disabled = true
+
+[node name="ToBasicMovementDemo" parent="Environment_Home" instance=ExtResource("33_7f5y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.20396, 1.14532, -0.0119629)
+scene = "uid://b7bmdn4aw25gf"
+
+[node name="Sprite3D" type="Sprite3D" parent="Environment_Home/ToBasicMovementDemo"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 2.2, 0)
+billboard = 2
+texture = SubResource("ViewportTexture_rcx4d")
+
+[node name="Viewport2DIn3D" type="Node3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("11_kn78k")
+screen_size = Vector2(1280, 720)
+scene = ExtResource("34_7f5y2")
+viewport_size = Vector2(1280, 720)
+alpha_scissor_threshold = 0.25
+unshaded = true
+filter = true
+scene_properties_keys = PackedStringArray("DialogUI.gd")
+
+[node name="Viewport" type="SubViewport" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D"]
+disable_3d = true
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 1
+
+[node name="Screen" type="MeshInstance3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D"]
+visible = false
+mesh = SubResource("QuadMesh_od06o")
+surface_material_override/0 = SubResource("StandardMaterial3D_rcx4d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D"]
+collision_layer = 5242881
+collision_mask = 0
+script = ExtResource("13_d6ov1")
+screen_size = Vector2(1280, 720)
+viewport_size = Vector2(1280, 720)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 shape = SubResource("BoxShape3D_6rgpa")
 disabled = true

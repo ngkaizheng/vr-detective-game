@@ -19,7 +19,7 @@ size = Vector2(1280, 720)
 [sub_resource type="ViewportTexture" id="ViewportTexture_uq8de"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq8de"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khl3k"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -174,7 +174,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
 visible = false
 mesh = SubResource("QuadMesh_glces")
-surface_material_override/0 = SubResource("StandardMaterial3D_uq8de")
+surface_material_override/0 = SubResource("StandardMaterial3D_khl3k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
 collision_layer = 5242881
