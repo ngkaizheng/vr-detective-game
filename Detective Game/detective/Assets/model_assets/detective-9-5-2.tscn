@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cednya0pgsg8u" path="res://Detective Game/detective/Scripts/DetectCollisionWithItem.gd" id="5_eaun1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6uban"]
-size = Vector3(3, 2, 3)
+size = Vector3(6, 2, 6)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l0hj7"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
@@ -20,7 +20,7 @@ size = Vector2(1280, 720)
 [sub_resource type="ViewportTexture" id="ViewportTexture_dyr4r"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jddub"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyr4r"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -36,7 +36,7 @@ size = Vector3(6, 6, 6)
 
 [node name="Detective" instance=ExtResource("1_1kr14")]
 script = ExtResource("2_jddub")
-messages = Array[String](["Interact to proceed!", "123", "456"])
+messages = Array[String](["“Hey, over here! Another stabbing. No weapon in sight. ”", "“Three people were nearby - one of them did it.”", "”Let's see what they have to say.\""])
 animation_clips = Array[String](["CatwalkIdle02", "Talking", "Talking", "Talking", "Talking", "Talking", "Talking", "Talking"])
 default_animation = "CatwalkIdle02"
 use_default_animation = true
@@ -45,35 +45,35 @@ use_default_animation = true
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Node" index="0"]
-bones/0/position = Vector3(-0.151784, 85.9632, -0.314877)
-bones/0/rotation = Quaternion(-0.0328766, 0.0255844, -0.01583, 0.999007)
-bones/2/rotation = Quaternion(-0.0193463, 0.0176524, -0.0149814, 0.999545)
-bones/4/rotation = Quaternion(0.0279352, 0.00119267, 0.00908542, 0.999568)
-bones/6/rotation = Quaternion(0.0278996, 0.0013266, 0.00917571, 0.999568)
-bones/11/rotation = Quaternion(0.000614978, -0.00731398, -0.00689789, 0.999949)
-bones/18/rotation = Quaternion(0.00764248, -0.072106, 0.0360761, 0.996715)
-bones/27/rotation = Quaternion(-0.587804, -0.386297, 0.615059, -0.35632)
-bones/28/rotation = Quaternion(0.44936, 0.126798, 0.105345, 0.878009)
-bones/31/rotation = Quaternion(0.00973524, -0.0072881, 0.0944571, 0.995455)
-bones/34/rotation = Quaternion(0.0350218, -0.0820989, -0.0169165, 0.995865)
-bones/37/rotation = Quaternion(0.159279, -0.391687, -0.118842, 0.898381)
-bones/39/rotation = Quaternion(0.619055, -0.11084, 0.134377, 0.765786)
-bones/40/rotation = Quaternion(-0.316686, -0.0943225, -0.25426, 0.908936)
-bones/42/rotation = Quaternion(0.574073, -0.416939, 0.574987, 0.407421)
-bones/44/rotation = Quaternion(0.497274, -0.064693, -0.0376561, 0.864358)
-bones/47/rotation = Quaternion(0.00969327, 0.00691122, -0.0924948, 0.995642)
-bones/50/rotation = Quaternion(0.0592709, 0.0929159, 0.00135454, 0.993907)
-bones/53/rotation = Quaternion(0.159735, -0.00434127, 0.0374401, 0.98644)
-bones/55/rotation = Quaternion(0.0309411, -0.0191683, 0.151023, 0.98786)
-bones/56/rotation = Quaternion(0.0807753, -0.0808975, 0.185184, 0.976032)
-bones/58/rotation = Quaternion(0.106012, 0.0432159, 0.992537, -0.0419939)
-bones/61/rotation = Quaternion(-0.195804, -0.0825857, 0.0529694, 0.975723)
-bones/65/rotation = Quaternion(0.57682, -0.274536, 0.0420387, 0.768206)
-bones/68/rotation = Quaternion(0.290245, -0.062406, 0.0102098, 0.954861)
-bones/72/rotation = Quaternion(-0.0371361, 0.0344271, 0.99861, 0.0146534)
-bones/76/rotation = Quaternion(-0.138414, 0.0873392, -0.0421362, 0.985616)
-bones/80/rotation = Quaternion(0.534087, 0.263939, -0.0530448, 0.80142)
-bones/83/rotation = Quaternion(0.291003, 0.0653205, -0.011675, 0.954418)
+bones/0/position = Vector3(0.0253085, 86.6359, -0.706152)
+bones/0/rotation = Quaternion(-0.0361429, 0.0531293, -0.0168654, 0.997791)
+bones/2/rotation = Quaternion(-0.00330558, -0.00392553, 0.00994351, 0.999937)
+bones/4/rotation = Quaternion(0.0506942, -0.00339743, 0.0161869, 0.998577)
+bones/6/rotation = Quaternion(-0.0374638, -0.00476678, -0.0100055, 0.999237)
+bones/11/rotation = Quaternion(0.0577396, -0.0102656, 0.00785583, 0.998248)
+bones/18/rotation = Quaternion(0.0365062, -0.0034474, -0.0111318, 0.999265)
+bones/27/rotation = Quaternion(-0.62258, -0.381255, 0.551928, -0.403007)
+bones/28/rotation = Quaternion(0.488605, 0.00963071, -0.031686, 0.871877)
+bones/31/rotation = Quaternion(-7.05561e-05, 0.0463663, 0.0962245, 0.994279)
+bones/34/rotation = Quaternion(-0.0288604, -0.00195046, 0.00965783, 0.999535)
+bones/37/rotation = Quaternion(0.0346485, -0.381372, -0.0576503, 0.921972)
+bones/39/rotation = Quaternion(0.619918, -0.0902868, 0.164234, 0.761956)
+bones/40/rotation = Quaternion(-0.329756, -0.0470612, -0.2192, 0.917059)
+bones/42/rotation = Quaternion(0.637612, -0.371178, 0.541361, 0.403244)
+bones/44/rotation = Quaternion(0.475786, -0.0329648, 0.0331303, 0.878318)
+bones/47/rotation = Quaternion(-0.00634009, -0.123353, -0.138901, 0.982573)
+bones/50/rotation = Quaternion(-0.00635029, 0.0417538, 0.00438618, 0.999098)
+bones/53/rotation = Quaternion(0.0679251, -0.0226293, 0.0407436, 0.996601)
+bones/55/rotation = Quaternion(0.0597178, -0.0213438, 0.139492, 0.98819)
+bones/56/rotation = Quaternion(0.0876174, -0.0812543, 0.172775, 0.977686)
+bones/58/rotation = Quaternion(0.0990117, -0.00433191, 0.990543, -0.0948829)
+bones/61/rotation = Quaternion(-0.100998, 0.0574788, -0.0164218, 0.993089)
+bones/65/rotation = Quaternion(0.571973, -0.113362, -0.00881864, 0.812354)
+bones/68/rotation = Quaternion(0.254311, -0.0551249, 0.0145202, 0.965441)
+bones/72/rotation = Quaternion(-0.0513426, -0.0134683, 0.998566, -0.00696242)
+bones/76/rotation = Quaternion(-0.0798984, -0.0297502, 0.0116638, 0.996291)
+bones/80/rotation = Quaternion(0.562271, 0.0839238, -0.0393635, 0.821741)
+bones/83/rotation = Quaternion(0.258406, 0.0585701, -0.0156977, 0.964131)
 
 [node name="AnimationPlayer" parent="." index="1"]
 blend_times = [&"CatwalkIdle02", &"CatwalkIdle02", 0.5, &"CatwalkIdle02", &"Talking", 0.5, &"CatwalkIdle02", &"mixamo_com", 0.5, &"Talking", &"CatwalkIdle02", 0.5, &"Talking", &"Talking", 0.5, &"Talking", &"mixamo_com", 0.5]
@@ -109,7 +109,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
 visible = false
 mesh = SubResource("QuadMesh_4svcn")
-surface_material_override/0 = SubResource("StandardMaterial3D_jddub")
+surface_material_override/0 = SubResource("StandardMaterial3D_dyr4r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
 collision_layer = 5242881
@@ -124,7 +124,7 @@ shape = SubResource("BoxShape3D_8v2kj")
 
 [node name="DetectCollisionWithItem" type="Node3D" parent="." index="4"]
 script = ExtResource("5_eaun1")
-modified_messages = Array[String](["Scissors detected!", "HAHA", "HOHO"])
+modified_messages = Array[String](["\"Hmm... Sewing scissors. Blood matches the victim, and these fibers...”", "“Same material as the victim's torn jacket sleeve.\"", "\"Professional grade too - not something you'd find in a kitchen or teenager's backpack. Let's see how our suspects react to this.\""])
 
 [node name="Area3D" type="Area3D" parent="DetectCollisionWithItem" index="0"]
 

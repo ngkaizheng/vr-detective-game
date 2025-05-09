@@ -56,7 +56,7 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 				appended_messages = modified_messages.duplicate() # Track appended messages
 				interactable.update_messages(modified_messages, true) # Append without updating display
 				has_updated_messages = true # Mark as updated
-				_log("Appended messages to Interactable3D: %s" % modified_messages)
+				#_log("Appended messages to Interactable3D: %s" % modified_messages)
 			else:
 				_log("ERROR: Cannot update messages; invalid interactable", true)
 			return

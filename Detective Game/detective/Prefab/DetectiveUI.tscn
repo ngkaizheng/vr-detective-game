@@ -6,6 +6,7 @@
 script = ExtResource("1_vjfdt")
 
 [node name="Control_Dialog" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +89,6 @@ layout_mode = 2
 text = "Press Trigger To Interact"
 
 [node name="Control_Identify" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -154,19 +154,19 @@ alignment = 1
 custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Johnson (Chef)"
+text = "Lina (Tailor)"
 
 [node name="Button_Suspect2" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Lily (Maid)"
+text = "Rita (Chef)"
 
 [node name="Button_Suspect3" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Gwen (Tailor)"
+text = "Jay (Streamer)"
 
 [node name="Control_Confirmation" type="Control" parent="."]
 visible = false
@@ -215,6 +215,7 @@ autowrap_mode = 3
 justification_flags = 161
 
 [node name="GridContainer_Button" type="GridContainer" parent="Control_Confirmation/MarginContainer/ColorRectBg/ColorRect"]
+layout_mode = 0
 offset_left = 70.0
 offset_top = 200.0
 offset_right = 770.0

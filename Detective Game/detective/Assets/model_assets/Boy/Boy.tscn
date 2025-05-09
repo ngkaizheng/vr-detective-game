@@ -20,7 +20,7 @@ size = Vector2(1280, 720)
 [sub_resource type="ViewportTexture" id="ViewportTexture_kytdg"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owhsp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kytdg"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -36,8 +36,8 @@ size = Vector3(6, 6, 6)
 
 [node name="Boy" instance=ExtResource("1_y8rwx")]
 script = ExtResource("2_kytdg")
-messages = Array[String](["Hi", "My", "Name"])
-animation_clips = Array[String](["SittingIdle", "SittingHeadDown", "SittingTalking"])
+messages = Array[String](["\"I'm Jay. I was live-streaming in the cafe next door! Check my VOD - 200 viewers saw the whole thing!\"", "\"Heard a scream, came to investigate like any good true crime fan would. Found the body... so metal.\"", "\"Rita threatened to ‘slice someone up’ earlier... but it was about tomatoes!\"", "\"The dead guy had enemies. Even I didn’t like him — but murder’s too much work.\""])
+animation_clips = Array[String](["SittingTalking", "SittingHeadDown", "SittingTalking", "SittingTalking", "SittingTalking", "SittingTalking"])
 default_animation = "SittingIdle"
 use_default_animation = true
 
@@ -158,7 +158,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_kwwfc")
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.069851, 1.11863, -0.00349915)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.5, 0.3)
 texture = SubResource("ViewportTexture_owhsp")
 
 [node name="Viewport2DIn3D" type="Node3D" parent="Sprite3D" index="0"]
@@ -182,7 +182,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
 visible = false
 mesh = SubResource("QuadMesh_dsncw")
-surface_material_override/0 = SubResource("StandardMaterial3D_owhsp")
+surface_material_override/0 = SubResource("StandardMaterial3D_kytdg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
 collision_layer = 5242881
@@ -197,7 +197,7 @@ shape = SubResource("BoxShape3D_uemy4")
 
 [node name="DetectCollisionWithItem" type="Node3D" parent="." index="4"]
 script = ExtResource("5_agxav")
-modified_messages = Array[String](["Scissors detected!", "HAHA", "HOHO"])
+modified_messages = Array[String](["\"Lina’s scissors? Oops. Should’ve thrown them in the river instead of hiding them.\"", "\"My chat’s going wild. ‘Detective Pikachu solves case!’\""])
 
 [node name="Area3D" type="Area3D" parent="DetectCollisionWithItem" index="0"]
 
