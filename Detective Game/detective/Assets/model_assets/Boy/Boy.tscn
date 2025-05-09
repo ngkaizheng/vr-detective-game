@@ -17,14 +17,14 @@ viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
 resource_local_to_scene = true
 size = Vector2(1280, 720)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xokyb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kytdg"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kytdg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owhsp"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_xokyb")
+albedo_texture = SubResource("ViewportTexture_kytdg")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uemy4"]
@@ -182,7 +182,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Sprite3D/Viewport2DIn3D" index="1"]
 visible = false
 mesh = SubResource("QuadMesh_dsncw")
-surface_material_override/0 = SubResource("StandardMaterial3D_kytdg")
+surface_material_override/0 = SubResource("StandardMaterial3D_owhsp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D/Viewport2DIn3D" index="2"]
 collision_layer = 5242881

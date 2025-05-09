@@ -53,7 +53,7 @@ func is_xr_class(name : String) -> bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# In Godot 4 we must now manually call our super class ready function
+	# Call the parent class ready function
 	super()
 
 	# Set the initial position to match the initial hinge position value
@@ -62,9 +62,9 @@ func _ready():
 		Vector3.ZERO
 	)
 
-	# Connect signals
-	if released.connect(_on_hinge_released):
-		push_error("Cannot connect hinge released signal")
+	# Connect the released signal
+	if released.connect(_on_hinge_released) != OK:
+		push_error("Failed to connect hinge released signal")
 
 
 # Called every frame when one or more handles are held by the player
@@ -102,7 +102,7 @@ func move_hinge(position: float) -> void:
 
 
 # Handle release of hinge
-func _on_hinge_released(_interactable: XRToolsInteractableHinge):
+func _on_hinge_released(_interactable: XRToolsInteractableHandleDriven) -> void:
 	if default_on_release:
 		move_hinge(_default_position_rad)
 

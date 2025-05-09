@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=52 format=3 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
 [ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://h4rwn1c7ifyw" path="res://Detective Game/detective/Assets/Detective-9-5/Detective-9-5.tscn" id="14_od06o"]
 [ext_resource type="PackedScene" uid="uid://bwkv3q0fvapaq" path="res://scenes/teleport_demo/objects/teleport_area_start.tscn" id="14_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://cd644gck0s6q1" path="res://Detective Game/detective/Assets/Damage_Floor/Damage_Floor_Mat.tres" id="15_3f441"]
+[ext_resource type="PackedScene" uid="uid://dl53mx1sd8phx" path="res://Detective Game/detective/Assets/Tailor/tailor_cgd.tscn" id="15_e76hv"]
 [ext_resource type="PackedScene" uid="uid://b4plexg81v7vy" path="res://Detective Game/detective/Assets/Interrogation-Room-Modified/interrogation_room_modified_door.tscn" id="15_hi3gy"]
 [ext_resource type="PackedScene" uid="uid://cli86dcjwni2f" path="res://Detective Game/detective/Assets/model_assets/detective-9-5-2.tscn" id="15_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
@@ -63,14 +64,14 @@ viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport
 resource_local_to_scene = true
 size = Vector2(1280, 720)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2hyni"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e76hv"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hyni"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75pp6"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2hyni")
+albedo_texture = SubResource("ViewportTexture_e76hv")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rgpa"]
@@ -92,14 +93,14 @@ size = Vector3(7, 5, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_dimmv"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_75pp6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mu56t"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e76hv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1v5k"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_75pp6")
+albedo_texture = SubResource("ViewportTexture_mu56t")
 texture_filter = 1
 
 [node name="Node3D" type="Node3D"]
@@ -201,21 +202,21 @@ viewport_size = Vector2(1280, 720)
 unshaded = true
 scene_properties_keys = PackedStringArray("DialogUI_Detective.gd")
 
-[node name="TeleportAreaStart" parent="CrimeScene" instance=ExtResource("14_pb52e")]
+[node name="TeleportAreaAtCrimeScene" parent="CrimeScene" instance=ExtResource("14_pb52e")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.55012, 0, -0.941518)
 
-[node name="XRToolsTeleportArea" type="Area3D" parent="CrimeScene/TeleportAreaStart" node_paths=PackedStringArray("target")]
+[node name="XRToolsTeleportArea" type="Area3D" parent="CrimeScene/TeleportAreaAtCrimeScene" node_paths=PackedStringArray("target")]
 collision_layer = 0
 collision_mask = 524288
 script = ExtResource("17_l0usc")
-target = NodePath("../../../InterrogationRoom/TeleportAreaEnd/TeleportTarget")
+target = NodePath("../../../InterrogationRoom/TeleportAreaAtInterrogationRoom/TeleportTarget")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CrimeScene/TeleportAreaStart/XRToolsTeleportArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrimeScene/TeleportAreaAtCrimeScene/XRToolsTeleportArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_l0usc")
 
-[node name="TeleportTarget" type="Marker3D" parent="CrimeScene/TeleportAreaStart"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82369, 0.1, 0)
+[node name="TeleportTarget" type="Marker3D" parent="CrimeScene/TeleportAreaAtCrimeScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66333, 0.1, 0)
 
 [node name="InterrogationRoom" type="Node3D" parent="."]
 
@@ -233,6 +234,9 @@ transform = Transform3D(-0.224424, 0, -0.974492, 0, 1, 0, 0.974492, 0, -0.224424
 
 [node name="interrogation_room_modified_door3" parent="InterrogationRoom" instance=ExtResource("15_hi3gy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.6, 13)
+
+[node name="Tailor_CGD" parent="InterrogationRoom/interrogation_room_modified_door3" instance=ExtResource("15_e76hv")]
+transform = Transform3D(-0.115752, 0, -0.993278, 0, 1, 0, 0.993278, 0, -0.115752, 1.01527, -1.51971, 0.0823364)
 
 [node name="TeleportAreaToHome" parent="InterrogationRoom" instance=ExtResource("14_pb52e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0666, 0, 8.21553)
@@ -276,7 +280,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_2hyni")
+surface_material_override/0 = SubResource("StandardMaterial3D_75pp6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -290,21 +294,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 shape = SubResource("BoxShape3D_6rgpa")
 disabled = true
 
-[node name="TeleportAreaEnd" parent="InterrogationRoom" instance=ExtResource("16_o0gwd")]
+[node name="TeleportAreaAtInterrogationRoom" parent="InterrogationRoom" instance=ExtResource("16_o0gwd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.80077, 0, 18.4959)
 
-[node name="XRToolsTeleportArea" type="Area3D" parent="InterrogationRoom/TeleportAreaEnd" node_paths=PackedStringArray("target")]
+[node name="XRToolsTeleportArea" type="Area3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom" node_paths=PackedStringArray("target")]
 collision_layer = 0
 collision_mask = 524288
 script = ExtResource("17_l0usc")
-target = NodePath("../../../CrimeScene/TeleportAreaStart/TeleportTarget")
+target = NodePath("../../../CrimeScene/TeleportAreaAtCrimeScene/TeleportTarget")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaEnd/XRToolsTeleportArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/XRToolsTeleportArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_l0usc")
 
-[node name="TeleportTarget" type="Marker3D" parent="InterrogationRoom/TeleportAreaEnd"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56366, 0.1, 0)
+[node name="TeleportTarget" type="Marker3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29867, 0.1, 0)
 
 [node name="Detective_New" parent="InterrogationRoom" instance=ExtResource("14_od06o")]
 transform = Transform3D(-0.596575, 0, 0.802557, 0, 1, 0, -0.802557, 0, -0.596575, -14.049, 0, 24.7098)
@@ -500,7 +504,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_e76hv")
+surface_material_override/0 = SubResource("StandardMaterial3D_l1v5k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881

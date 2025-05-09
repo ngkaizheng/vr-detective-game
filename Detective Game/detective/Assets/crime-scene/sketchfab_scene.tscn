@@ -19,6 +19,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0561676, -0.00771809)
 size = Vector3(1, 0.187, 1)
 texture_albedo = ExtResource("2_pxlht")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Sketchfab_model" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.142384, 2.368, 1.85534)
+light_color = Color(1, 0.819608, 0.290196, 1)
+spot_attenuation = 1.2
+spot_angle = 180.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Sketchfab_model" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.86637, 2.368, 1.85534)
+light_color = Color(1, 0.819608, 0.290196, 1)
+spot_attenuation = 1.2
+spot_angle = 180.0
+
 [node name="CrimeScene1FaceWall" parent="." index="1" instance=ExtResource("3_lwvj3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 2.56286)
 
