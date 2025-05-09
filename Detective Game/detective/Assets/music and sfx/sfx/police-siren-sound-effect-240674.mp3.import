@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccqtlcnq2ayc6"
+path="res://.godot/imported/police-siren-sound-effect-240674.mp3-e895fa78cd0cbeacc2aa5c4248dad090.mp3str"
+
+[deps]
+
+source_file="res://Detective Game/detective/Assets/music and sfx/sfx/police-siren-sound-effect-240674.mp3"
+dest_files=["res://.godot/imported/police-siren-sound-effect-240674.mp3-e895fa78cd0cbeacc2aa5c4248dad090.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

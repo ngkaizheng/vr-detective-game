@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=68 format=3 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
 [ext_resource type="Script" uid="uid://boefufcj68igj" path="res://Detective Game/detective/Scripts/pickable_scissor.gd" id="4_32dhj"]
@@ -19,6 +19,7 @@
 [ext_resource type="BoxMesh" uid="uid://cd644gck0s6q1" path="res://Detective Game/detective/Assets/Damage_Floor/Damage_Floor_Mat.tres" id="15_3f441"]
 [ext_resource type="PackedScene" uid="uid://dl53mx1sd8phx" path="res://Detective Game/detective/Assets/Tailor/tailor_cgd.tscn" id="15_e76hv"]
 [ext_resource type="PackedScene" uid="uid://b4plexg81v7vy" path="res://Detective Game/detective/Assets/Interrogation-Room-Modified/interrogation_room_modified_door.tscn" id="15_hi3gy"]
+[ext_resource type="AudioStream" uid="uid://1jlgc4pox272" path="res://Detective Game/detective/Assets/music and sfx/music/interrogation.mp3" id="15_mu56t"]
 [ext_resource type="PackedScene" uid="uid://cli86dcjwni2f" path="res://Detective Game/detective/Assets/model_assets/detective-9-5-2.tscn" id="15_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
 [ext_resource type="PackedScene" uid="uid://2j2ufl3svgcl" path="res://scenes/teleport_demo/objects/teleport_area_end.tscn" id="16_o0gwd"]
@@ -31,6 +32,11 @@
 [ext_resource type="Script" uid="uid://bv8ad63hu540p" path="res://Detective Game/detective/Scripts/FadeController.gd" id="26_6rgpa"]
 [ext_resource type="PackedScene" uid="uid://csmv7xua18g6v" path="res://Detective Game/detective/Prefab/EndingUI.tscn" id="26_ymaw5"]
 [ext_resource type="BoxMesh" uid="uid://2twhnnm8m3k4" path="res://Detective Game/detective/Assets/Rock_Floor/wall_mesh_ending.tres" id="31_mu56t"]
+[ext_resource type="AudioStream" uid="uid://dd8gnqq584n88" path="res://Detective Game/detective/Assets/music and sfx/music/main-menu.mp3" id="33_l1v5k"]
+[ext_resource type="Script" uid="uid://c7giroyli87jb" path="res://Detective Game/detective/Scripts/AudioController.gd" id="34_25iwe"]
+[ext_resource type="AudioStream" uid="uid://bxet778g62mbk" path="res://Detective Game/detective/Assets/music and sfx/music/interrogate.mp3" id="35_7ka8n"]
+[ext_resource type="AudioStream" uid="uid://dr3c4oypqb0um" path="res://Detective Game/detective/Assets/music and sfx/music/good-ending.mp3" id="36_scweg"]
+[ext_resource type="AudioStream" uid="uid://bhj6gmvo6k0sh" path="res://Detective Game/detective/Assets/music and sfx/music/bad-end.mp3" id="37_7f5y2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f24su"]
 
@@ -68,7 +74,7 @@ size = Vector2(1280, 720)
 [sub_resource type="ViewportTexture" id="ViewportTexture_8x0sk"]
 viewport_path = NodePath("CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75pp6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25iwe"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -85,7 +91,7 @@ viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport
 [sub_resource type="ViewportTexture" id="ViewportTexture_by88x"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mu56t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ka8n"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -98,7 +104,7 @@ viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Spri
 [sub_resource type="ViewportTexture" id="ViewportTexture_7ka8n"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l1v5k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scweg"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
@@ -123,12 +129,21 @@ viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_7f5y2"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x0sk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f5y2"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_7f5y2")
 texture_filter = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i2ki3"]
+size = Vector3(8, 8, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_scweg"]
+size = Vector3(5.019, 5, 5.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7f5y2"]
+size = Vector3(10, 10, 10)
 
 [node name="Node3D" type="Node3D"]
 
@@ -271,7 +286,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_75pp6")
+surface_material_override/0 = SubResource("StandardMaterial3D_25iwe")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -284,6 +299,12 @@ viewport_size = Vector2(1280, 720)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 shape = SubResource("BoxShape3D_6rgpa")
 disabled = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CrimeScene"]
+stream = ExtResource("15_mu56t")
+volume_db = -30.0
+autoplay = true
+max_distance = 10.0
 
 [node name="InterrogationRoom" type="Node3D" parent="."]
 
@@ -347,7 +368,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_mu56t")
+surface_material_override/0 = SubResource("StandardMaterial3D_7ka8n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -403,7 +424,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_l1v5k")
+surface_material_override/0 = SubResource("StandardMaterial3D_scweg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -502,11 +523,13 @@ transform = Transform3D(1, 0, 0, 0, 0.994874, 0.101126, 0, -0.101126, 0.994874, 
 spot_range = 100.0
 spot_attenuation = 0.58
 
-[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("detective", "teleport", "ending_ui_sprite")]
+[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("detective", "teleport", "ending_ui_sprite", "area_good_end", "area_bad_end")]
 script = ExtResource("19_6j4oe")
 detective = NodePath("../InterrogationRoom/Detective")
 teleport = NodePath("../InterrogationRoom/TeleportAreaToHome")
 ending_ui_sprite = NodePath("../Environment_Home/Sprite3D")
+area_good_end = NodePath("../AudioControllerGoodEnd/Area3D")
+area_bad_end = NodePath("../AudioControllerBadEnd/Area3D")
 modified_messages = Array[String](["\"So… that’s your pick? Alright. You’ve put in the work today—go get some rest. We’ll see how this plays out.\""])
 
 [node name="FadeController" type="Node3D" parent="."]
@@ -608,7 +631,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_8x0sk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7f5y2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -621,3 +644,91 @@ viewport_size = Vector2(1280, 720)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 shape = SubResource("BoxShape3D_6rgpa")
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioControllerCrimeScene" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.84101, 0, 0)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("15_mu56t")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerCrimeScene"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerCrimeScene/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30343, 1.94383, 0)
+shape = SubResource("BoxShape3D_i2ki3")
+
+[node name="AudioControllerInerrogation" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.50438, 0, -0.580791)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("35_7ka8n")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerInerrogation"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerInerrogation/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68407, 1.91619, 0.728613)
+shape = SubResource("BoxShape3D_scweg")
+debug_color = Color(0.433696, 0.456569, 1, 0.42)
+
+[node name="AudioControllerInerrogation2" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.50438, 0, 5.90266)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("35_7ka8n")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerInerrogation2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerInerrogation2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68407, 1.91619, 0.728613)
+shape = SubResource("BoxShape3D_scweg")
+debug_color = Color(0.433696, 0.456569, 1, 0.42)
+
+[node name="AudioControllerInerrogatio3" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.50438, 0, 12.3071)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("35_7ka8n")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerInerrogatio3"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerInerrogatio3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68407, 1.91619, 0.728613)
+shape = SubResource("BoxShape3D_scweg")
+debug_color = Color(0.433696, 0.456569, 1, 0.42)
+
+[node name="AudioControllerGoodEnd" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.62, 1.81711, 11.7732)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("36_scweg")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerGoodEnd"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerGoodEnd/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.186749)
+shape = SubResource("BoxShape3D_7f5y2")
+debug_color = Color(0.433696, 0.456569, 1, 0.42)
+
+[node name="AudioControllerBadEnd" type="Node3D" parent="." node_paths=PackedStringArray("audio_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.62, 1.81711, 11.7732)
+script = ExtResource("34_25iwe")
+audio_player = NodePath("../AudioStreamPlayer")
+area_music = ExtResource("37_7f5y2")
+default_music = ExtResource("33_l1v5k")
+
+[node name="Area3D" type="Area3D" parent="AudioControllerBadEnd"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AudioControllerBadEnd/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.186749)
+shape = SubResource("BoxShape3D_7f5y2")
+debug_color = Color(0.433696, 0.456569, 1, 0.42)

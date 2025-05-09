@@ -1,12 +1,15 @@
 extends Node
 
 ## GameController script to handle game logic, including catching the suspect_selected signal,
-## updating the Detective's Interactable3D messages, and showing ending UI based on suspect_id.
+## updating the Detective's Interactable3D messages, enabling Area3D monitoring based on suspect_id,
+## and showing ending UI.
 
 ## Exported properties for customization in the editor
 @export var detective: Node3D = null ## Reference to the Detective Node3D
 @export var teleport: Node3D = null ## Reference to the Teleport Node3D
 @export var ending_ui_sprite: Node3D = null ## Reference to the Sprite3D with EndingUI.tscn
+@export var area_good_end: Area3D = null ## Reference to the Area3DGoodEnd node
+@export var area_bad_end: Area3D = null ## Reference to the Area3DBadEnd node
 @export var modified_messages: Array[String] = ["Suspect confirmed!"] ## Messages to append to Detective's Interactable3D
 @export var enable_logging: bool = true ## Enable/disable debug logging
 
@@ -61,6 +64,19 @@ func _ready() -> void:
 	else:
 		_log("ERROR: Teleport node not assigned", true)
 	
+	# Initialize Good and Bad End Area3D nodes
+	if area_good_end and area_good_end is Area3D:
+		area_good_end.monitoring = false
+		_log("Area3DGoodEnd initialized, monitoring disabled")
+	else:
+		_log("ERROR: Area3DGoodEnd not assigned or not an Area3D", true)
+	
+	if area_bad_end and area_bad_end is Area3D:
+		area_bad_end.monitoring = false
+		_log("Area3DBadEnd initialized, monitoring disabled")
+	else:
+		_log("ERROR: Area3DBadEnd not assigned or not an Area3D", true)
+	
 	# Initialize EndingUI
 	if ending_ui_sprite:
 		var viewport = ending_ui_sprite.get_node_or_null("Viewport2DIn3D")
@@ -109,7 +125,7 @@ func _wait_for_scene_instance(viewport: XRToolsViewport2DIn3D) -> Node:
 
 func _on_suspect_selected(suspect_id: int) -> void:
 	# Handle the suspect_selected signal by storing the suspect_id, updating messages,
-	# showing the Teleport, and displaying the appropriate ending UI
+	# enabling teleport and appropriate Area3D, and displaying the ending UI
 	_log("Received suspect_selected signal with suspect_id=%s" % suspect_id)
 	
 	# Store the suspect_id
@@ -131,6 +147,20 @@ func _on_suspect_selected(suspect_id: int) -> void:
 		_log("Teleport node shown and monitoring enabled after suspect selection")
 	else:
 		_log("ERROR: Teleport or XRToolsTeleportArea not valid, cannot enable", true)
+	
+	# Enable the appropriate Area3D based on suspect_id
+	if selected_suspect_id == 1:
+		if area_good_end and area_good_end is Area3D:
+			area_good_end.monitoring = true
+			_log("Enabled monitoring for Area3DGoodEnd (suspect_id=%s)" % selected_suspect_id)
+		else:
+			_log("ERROR: Area3DGoodEnd not valid, cannot enable monitoring", true)
+	else:
+		if area_bad_end and area_bad_end is Area3D:
+			area_bad_end.monitoring = true
+			_log("Enabled monitoring for Area3DBadEnd (suspect_id=%s)" % selected_suspect_id)
+		else:
+			_log("ERROR: Area3DBadEnd not valid, cannot enable monitoring", true)
 	
 	# Show the appropriate ending based on suspect_id
 	if ending_ui:

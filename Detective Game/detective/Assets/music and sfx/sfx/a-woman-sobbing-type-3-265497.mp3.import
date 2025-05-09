@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://81ekaoq5jit1"
+path="res://.godot/imported/a-woman-sobbing-type-3-265497.mp3-a3d44605ceb6cf3c2907388f5775f7e8.mp3str"
+
+[deps]
+
+source_file="res://Detective Game/detective/Assets/music and sfx/sfx/a-woman-sobbing-type-3-265497.mp3"
+dest_files=["res://.godot/imported/a-woman-sobbing-type-3-265497.mp3-a3d44605ceb6cf3c2907388f5775f7e8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

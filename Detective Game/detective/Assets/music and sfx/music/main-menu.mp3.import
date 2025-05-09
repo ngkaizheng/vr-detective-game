@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dd8gnqq584n88"
+path="res://.godot/imported/main-menu.mp3-15a232d6d439b9c1befdb5d2eb616b61.mp3str"
+
+[deps]
+
+source_file="res://Detective Game/detective/Assets/music and sfx/music/main-menu.mp3"
+dest_files=["res://.godot/imported/main-menu.mp3-15a232d6d439b9c1befdb5d2eb616b61.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

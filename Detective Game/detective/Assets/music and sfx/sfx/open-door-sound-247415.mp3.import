@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chgb4820r5gco"
+path="res://.godot/imported/open-door-sound-247415.mp3-8cad1b7b9a0f4700bb4fe8958f47090f.mp3str"
+
+[deps]
+
+source_file="res://Detective Game/detective/Assets/music and sfx/sfx/open-door-sound-247415.mp3"
+dest_files=["res://.godot/imported/open-door-sound-247415.mp3-8cad1b7b9a0f4700bb4fe8958f47090f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
