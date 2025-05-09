@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cednya0pgsg8u" path="res://Detective Game/detective/Scripts/DetectCollisionWithItem.gd" id="5_agxav"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwwfc"]
-size = Vector3(3, 2, 3)
+size = Vector3(5, 2, 5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_owhsp"]
 viewport_path = NodePath("Sprite3D/Viewport2DIn3D/Viewport")
