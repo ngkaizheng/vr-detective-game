@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://bpmluja1ksvqo"]
+[gd_scene load_steps=78 format=4 uid="uid://bpmluja1ksvqo"]
 
 [ext_resource type="Script" uid="uid://bqavdh5vrf7f1" path="res://scenes/demo_scene_base.gd" id="1_7ka8n"]
 [ext_resource type="PackedScene" uid="uid://cutpc4hwsxntf" path="res://Detective Game/detective/Prefab/xr_origin.tscn" id="1_viwek"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dtirdk6p2v70r" path="res://Detective Game/detective/Assets/Blood/Blood Spray 8.png" id="5_gwd0x"]
 [ext_resource type="Texture2D" uid="uid://k0eddswi2kon" path="res://Detective Game/detective/Assets/Blood/Bloody Footprints 1.png" id="5_qvn0q"]
 [ext_resource type="Texture2D" uid="uid://cncyvxvianujk" path="res://Detective Game/detective/Assets/Blood/Blood Spray 3.png" id="6_2bdsp"]
+[ext_resource type="Texture2D" uid="uid://d2yjja0oktgvf" path="res://Detective Game/detective/Assets/Blood/Blood Pool 12.png" id="7_tfubk"]
+[ext_resource type="Texture2D" uid="uid://cklh8sk0ye15a" path="res://Detective Game/detective/Assets/Blood/Bloody Footprints 2.png" id="8_sogry"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="10_g5n14"]
 [ext_resource type="PackedScene" uid="uid://cjgyl4jb6wbwk" path="res://Detective Game/detective/Prefab/DetectiveUI.tscn" id="11_1f867"]
 [ext_resource type="Script" uid="uid://cq06misyc06sk" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.gd" id="11_kn78k"]
@@ -23,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://ccv3ls0mi0d61" path="res://Detective Game/detective/Assets/music and sfx/music/interrogation.mp3" id="15_mu56t"]
 [ext_resource type="PackedScene" uid="uid://cli86dcjwni2f" path="res://Detective Game/detective/Assets/model_assets/detective-9-5-2.tscn" id="15_pb52e"]
 [ext_resource type="BoxMesh" uid="uid://ctmu4eklsy4xv" path="res://Detective Game/detective/Assets/Concrete_Floor/Concrete_Floor_Mat.tres" id="16_6j4oe"]
+[ext_resource type="PackedScene" uid="uid://d0xpb8t10u2tq" path="res://Detective Game/detective/Assets/DiePerson/dying.tscn" id="16_i2ki3"]
 [ext_resource type="PackedScene" uid="uid://2j2ufl3svgcl" path="res://scenes/teleport_demo/objects/teleport_area_end.tscn" id="16_o0gwd"]
 [ext_resource type="Script" uid="uid://bmvprn305j6yb" path="res://Detective Game/detective/Scripts/teleport_area_fade.gd" id="17_l0usc"]
 [ext_resource type="Script" uid="uid://cy8dl8kcu5xgi" path="res://Detective Game/detective/Scripts/GameController.gd" id="19_6j4oe"]
@@ -74,14 +77,14 @@ viewport_path = NodePath("CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2
 resource_local_to_scene = true
 size = Vector2(1280, 720)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_i2ki3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sogry"]
 viewport_path = NodePath("CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f5y2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcx4d"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_i2ki3")
+albedo_texture = SubResource("ViewportTexture_sogry")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6rgpa"]
@@ -95,27 +98,27 @@ loop = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_6rgpa"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sogry"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s6480"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2ki3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhwfw"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_sogry")
+albedo_texture = SubResource("ViewportTexture_s6480")
 texture_filter = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l1v5k"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s6480"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_so12b"]
 viewport_path = NodePath("InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfubk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rtnf"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_s6480")
+albedo_texture = SubResource("ViewportTexture_so12b")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmm7h"]
@@ -133,27 +136,27 @@ size = Vector3(9, 9, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_dimmv"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_so12b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mcgcu"]
 viewport_path = NodePath("Environment_Home/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sogry"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsp8j"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_so12b")
+albedo_texture = SubResource("ViewportTexture_mcgcu")
 texture_filter = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_rcx4d"]
 viewport_path = NodePath("Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lsp8j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cly1f"]
 viewport_path = NodePath("Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D/Viewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcx4d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puysv"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_lsp8j")
+albedo_texture = SubResource("ViewportTexture_cly1f")
 texture_filter = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2ki3"]
@@ -207,21 +210,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
 [node name="BloodFootprint" type="Sprite3D" parent="CrimeScene/Room_Scene"]
 transform = Transform3D(-0.1, -8.74228e-09, 3.82137e-16, 0, -4.37114e-09, -0.1, 8.74228e-09, -0.1, 4.37114e-09, -0.803639, 0.00228146, -0.615562)
+visible = false
 texture = ExtResource("5_qvn0q")
 
 [node name="BloodSpray" type="Sprite3D" parent="CrimeScene/Room_Scene"]
 transform = Transform3D(-0.0601508, 0.0798867, -3.49196e-09, -4.23516e-23, -4.37114e-09, -0.1, -0.0798867, -0.0601508, 2.62928e-09, 1.556, 0.002, 1.284)
+visible = false
 texture = ExtResource("6_2bdsp")
 
 [node name="Sprite3D" type="Sprite3D" parent="CrimeScene/Room_Scene"]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 2.52, 1.25437, 0.0182471)
+visible = false
 texture = ExtResource("5_gwd0x")
 
 [node name="Decal" type="Decal" parent="CrimeScene/Room_Scene"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0433073, -0.0561681, 0.901022)
-visible = false
-size = Vector3(5, 0.186981, 5)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0433073, -0.0561681, -0.0985861)
+size = Vector3(2.5, 1, 2.5)
 texture_albedo = ExtResource("6_2bdsp")
+cull_mask = 1048572
+
+[node name="Decal2" type="Decal" parent="CrimeScene/Room_Scene"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.41669, -0.542759, -0.166259)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("7_tfubk")
+
+[node name="Decal3" type="Decal" parent="CrimeScene/Room_Scene"]
+transform = Transform3D(1.92002, 0, -0.559926, 0, 2, 0, 0.559926, 0, 1.92002, 1.47868, -0.542759, -1.19832)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("8_sogry")
+
+[node name="Decal4" type="Decal" parent="CrimeScene/Room_Scene"]
+transform = Transform3D(-1.89059, 0, 0.652423, 0, 2, 0, -0.652423, 0, -1.89059, -1.32351, -0.542759, -1.19832)
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("8_sogry")
 
 [node name="CollisionWall" type="Node3D" parent="CrimeScene/Room_Scene"]
 
@@ -282,7 +303,7 @@ shape = SubResource("CylinderShape3D_l0usc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66333, 0.1, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="CrimeScene/TeleportAreaAtCrimeScene"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.26433, 2.2, 0)
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.356838, 2.2, 0)
 billboard = 2
 texture = SubResource("ViewportTexture_mu56t")
 
@@ -307,7 +328,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_7f5y2")
+surface_material_override/0 = SubResource("StandardMaterial3D_rcx4d")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CrimeScene/TeleportAreaAtCrimeScene/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -326,6 +347,8 @@ stream = SubResource("AudioStreamMP3_scweg")
 volume_db = -30.0
 autoplay = true
 max_distance = 10.0
+
+[node name="Dying" parent="CrimeScene" instance=ExtResource("16_i2ki3")]
 
 [node name="InterrogationRoom" type="Node3D" parent="."]
 
@@ -389,7 +412,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_i2ki3")
+surface_material_override/0 = SubResource("StandardMaterial3D_xhwfw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaToHome/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -445,7 +468,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_tfubk")
+surface_material_override/0 = SubResource("StandardMaterial3D_7rtnf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InterrogationRoom/TeleportAreaAtInterrogationRoom/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -658,7 +681,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_sogry")
+surface_material_override/0 = SubResource("StandardMaterial3D_lsp8j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881
@@ -702,7 +725,7 @@ render_target_update_mode = 1
 [node name="Screen" type="MeshInstance3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D"]
 visible = false
 mesh = SubResource("QuadMesh_od06o")
-surface_material_override/0 = SubResource("StandardMaterial3D_rcx4d")
+surface_material_override/0 = SubResource("StandardMaterial3D_puysv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Environment_Home/ToBasicMovementDemo/Sprite3D/Viewport2DIn3D"]
 collision_layer = 5242881

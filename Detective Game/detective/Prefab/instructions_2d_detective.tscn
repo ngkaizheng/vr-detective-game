@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://x5hn31g37fvl"]
+
+[node name="Instructions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 250.0
+color = Color(0, 0, 0, 0.87451)
+
+[node name="Description" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 240.0
+theme_override_constants/line_separation = -3
+theme_override_font_sizes/normal_font_size = 10
+text = "VR DETECTIVE GAME
+How to Play
+You are a detective solving a murder in a Victorian-era room.
+Find clues, interrogate suspects, and identify the killer.
+
+Controls
+Movement:
+Left Joystick: Move forward/backward/left/right
+Right Joystick: Rotate your body
+
+Interactions:
+Grab (Grip Button):
+Hold to pick up items
+Pull/push doors to open
+Trigger: Play item animation
+
+Dialogues:
+Point at Dialogues with controller → Press [Trigger] to:
+Continue the conversation"

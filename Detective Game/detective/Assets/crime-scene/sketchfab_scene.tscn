@@ -8,6 +8,84 @@
 
 [node name="Sketchfab_Scene" instance=ExtResource("1_21wte")]
 
+[node name="polySurface8_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface8" index="0"]
+layers = 33
+
+[node name="polySurface8_Wallpaper_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface8" index="1"]
+layers = 33
+
+[node name="polySurface9_Wallpaper_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface9" index="0"]
+layers = 33
+
+[node name="polySurface9_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface9" index="1"]
+layers = 33
+
+[node name="polySurface11_Wallpaper_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface11" index="0"]
+layers = 33
+
+[node name="polySurface11_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface11" index="1"]
+layers = 33
+
+[node name="pCube15_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube15" index="0"]
+layers = 33
+
+[node name="pSphere5_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pSphere5" index="0"]
+layers = 33
+
+[node name="pSphere5_Wallpaper_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pSphere5" index="1"]
+layers = 33
+
+[node name="pCylinder5_Grunge_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCylinder5" index="0"]
+layers = 33
+
+[node name="pCylinder5_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCylinder5" index="1"]
+layers = 33
+
+[node name="pCylinder6_Grunge_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCylinder6" index="0"]
+layers = 33
+
+[node name="pCylinder6_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCylinder6" index="1"]
+layers = 33
+
+[node name="pCube20_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube20" index="0"]
+layers = 33
+
+[node name="pCube25_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube25" index="0"]
+layers = 33
+
+[node name="polySurface14_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface14" index="0"]
+layers = 33
+
+[node name="polySurface15_Wallpaper_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface15" index="0"]
+layers = 33
+
+[node name="polySurface15_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/polySurface15" index="1"]
+layers = 32
+
+[node name="pCube28_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube28" index="0"]
+layers = 33
+
+[node name="pCube29_TrimSheet_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube29" index="0"]
+layers = 33
+
+[node name="Telephone2_Table1_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/Telephone2" index="0"]
+layers = 33
+
+[node name="pCube33_Portrait_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube33" index="0"]
+layers = 33
+
+[node name="Tick_Tock_Tick_Tock2_pCube3Shape_Tick_Tock_Tick_Tock2_Bottom_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/Tick_Tock_Tick_Tock2_pCube3Shape" index="0"]
+layers = 33
+
+[node name="Tick_Tock_Tick_Tock2_pCube3Shape_Tick_Tock_Tick_Tock2_Door_Details_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/Tick_Tock_Tick_Tock2_pCube3Shape" index="1"]
+layers = 33
+
+[node name="Tick_Tock_Tick_Tock2_pCube3Shape_Tick_Tock_Tick_Tock2_Top_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/Tick_Tock_Tick_Tock2_pCube3Shape" index="2"]
+layers = 33
+
+[node name="pCube34_Floor_0" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube34" index="0"]
+layers = 33
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube34/pCube34_Floor_0" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
@@ -16,7 +94,8 @@ shape = SubResource("BoxShape3D_gw828")
 
 [node name="Decal2" type="Decal" parent="Sketchfab_model/3330829addd34806a9cb279853099076_fbx/Object_2/RootNode/pCube34/pCube34_Floor_0" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0561676, -0.00771809)
-size = Vector3(1, 0.187, 1)
+visible = false
+size = Vector3(1, 0.5, 1)
 texture_albedo = ExtResource("2_pxlht")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Sketchfab_model" index="1"]

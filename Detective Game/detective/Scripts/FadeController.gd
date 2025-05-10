@@ -19,12 +19,16 @@ func _ready() -> void:
 	if not camera:
 		push_error("FadeController: No XRCamera3D found in scene")
 		return
+	else:
+		print("FadeController: Camera Found")
 	
 	# Check for existing XRToolsFade node
 	for child in camera.get_children():
 		if child is XRToolsFade:
 			_fade_node = child
 			break
+		else:
+			print("FadeController: Fade node found")
 	
 	# If no XRToolsFade node, instance Fade.tscn
 	if not _fade_node:
@@ -43,22 +47,28 @@ func _ready() -> void:
 
 
 # Find the XRCamera3D in the scene
+#func _find_xr_camera() -> XRCamera3D:
+	#var cameras: Array[Node] = get_tree().get_nodes_in_group("xr_origin")
+	#if not cameras.is_empty():
+		#return cameras[0] as XRCamera3D
+	#for origin in get_tree().get_nodes_in_group("xr_origin"):
+		#var cams: Array[Node] = origin.find_children("*", "XRCamera3D")
+		#if not cams.is_empty():
+			#return cams[0] as XRCamera3D
+	#return null
 func _find_xr_camera() -> XRCamera3D:
-	var cameras: Array[Node] = get_tree().get_nodes_in_group("xr_camera")
-	if not cameras.is_empty():
-		return cameras[0] as XRCamera3D
-	for origin in get_tree().get_nodes_in_group("xr_origin"):
-		var cams: Array[Node] = origin.find_children("*", "XRCamera3D")
-		if not cams.is_empty():
-			return cams[0] as XRCamera3D
-	return null
-
+	var origins = get_tree().get_nodes_in_group("xr_origin")
+	if origins.is_empty():
+		return null
+	# Get the first XROrigin3D and find its XRCamera3D child
+	var camera = origins[0].get_node("XRCamera3D")  # Assumes exact name
+	return camera as XRCamera3D  # Ensures type safety
 
 # Fade to black with specified duration
 func fade_to_black(duration: float) -> void:
-	if not _fade_node:
-		push_error("FadeController: No XRToolsFade node available")
-		return
+	#if not _fade_node:
+		#push_error("FadeController: No XRToolsFade node available")
+		#return
 	
 	# Kill any existing tween
 	if _tween:
@@ -77,9 +87,9 @@ func fade_to_black(duration: float) -> void:
 
 # Fade to clear with specified duration
 func fade_to_clear(duration: float) -> void:
-	if not _fade_node:
-		push_error("FadeController: No XRToolsFade node available")
-		return
+	#if not _fade_node:
+		#push_error("FadeController: No XRToolsFade node available")
+		#return
 	
 	# Kill any existing tween
 	if _tween:
