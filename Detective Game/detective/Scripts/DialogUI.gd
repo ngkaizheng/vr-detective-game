@@ -8,7 +8,7 @@ signal previous_button_pressed()
 
 func _ready():
 	# Connect the Next button's pressed signal
-	var next_button = $Control_Dialog/ColorRect/CenterContainer/GridContainer_Button/Next
+	var next_button = $Control_Dialog/ColorRect/CenterContainer/GridContainer_Button/Next 
 	if next_button:
 		next_button.pressed.connect(_on_next_button_pressed)
 	else:

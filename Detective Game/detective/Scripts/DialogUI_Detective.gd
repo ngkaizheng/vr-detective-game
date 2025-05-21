@@ -27,6 +27,7 @@ var identify_murderer_button: Button = null
 var suspect1_button: Button = null
 var suspect2_button: Button = null
 var suspect3_button: Button = null
+var suspect4_button: Button = null
 var back_button: Button = null
 var no_button: Button = null
 var yes_button: Button = null
@@ -48,9 +49,24 @@ func _initialize_ui():
 	suspect1_button = $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect1
 	suspect2_button = $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect2
 	suspect3_button = $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect3
+	suspect4_button = $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect4
 	back_button = $Control_Identify/ColorRect/CenterContainer/GridContainer_Button/Back
 	no_button = $Control_Confirmation/MarginContainer/ColorRectBg/ColorRect/GridContainer_Button/No
 	yes_button = $Control_Confirmation/MarginContainer/ColorRectBg/ColorRect/GridContainer_Button/Yes
+	
+	var endingText = ""
+	match Initialization.suspect:
+		"Lina":
+			endingText = "Lina the tailor was arrested. Her prized scissors matched the wounds perfectly. The victim's last words? 'Your hemming is crooked.' Some insults cut deeper than blades."
+		"Rita":
+			endingText = "Overworked chef, Rita was caught murdering a man at his house over unpaid catering services. Beloved friend's scissor was chosen as murder weapon."
+		"Jay":
+			endingText = "Uprising Internet star and streamer, Jay ultimately destroys own career over argument over filming credit rights. From friends to foe in a quick glimpse, shattering long-term friendship."
+		"Detective":
+			endingText = "The upbringer of law and justice turns corrupt over blackmail and exposure by responsible civillian leads to his unrightfully demise. The former detective has been arrested by fellow co-worker."
+	
+	var EndingViewPort = $/root/DemoStaging/Scene/Node3D/Environment_Home/Sprite3D/Viewport2DIn3D
+	EndingViewPort.get_scene_instance().get_node('Control_Dialog/ColorRect/Control_Ending1/Label_Ending').text = endingText
 
 	# Initialize UI visibility
 	if dialog_control:
@@ -86,19 +102,37 @@ func _initialize_ui():
 
 	# Connect Control_Identify button signals
 	if suspect1_button:
-		suspect1_button.pressed.connect(_on_suspect_button_pressed.bind(1))
+		if Initialization.suspect == "Lina":
+			suspect1_button.pressed.connect(_on_suspect_button_pressed.bind(1))
+		else:
+			suspect1_button.pressed.connect(_on_suspect_button_pressed.bind(2))
+			
 	else:
 		push_warning("DialogUI: ERROR - Button_Suspect1 not found at $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect1")
 
 	if suspect2_button:
-		suspect2_button.pressed.connect(_on_suspect_button_pressed.bind(2))
+		if Initialization.suspect == "Rita":
+			suspect2_button.pressed.connect(_on_suspect_button_pressed.bind(1))
+		else:
+			suspect2_button.pressed.connect(_on_suspect_button_pressed.bind(2))
 	else:
 		push_warning("DialogUI: ERROR - Button_Suspect2 not found at $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect2")
 
 	if suspect3_button:
-		suspect3_button.pressed.connect(_on_suspect_button_pressed.bind(3))
+		if Initialization.suspect == "Jay":
+			suspect3_button.pressed.connect(_on_suspect_button_pressed.bind(1))
+		else:
+			suspect3_button.pressed.connect(_on_suspect_button_pressed.bind(2))
 	else:
 		push_warning("DialogUI: ERROR - Button_Suspect3 not found at $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect3")
+
+	if suspect4_button:
+		if Initialization.suspect == "Detective":
+			suspect4_button.pressed.connect(_on_suspect_button_pressed.bind(1))
+		else:
+			suspect4_button.pressed.connect(_on_suspect_button_pressed.bind(2))
+	else:
+		push_warning("DialogUI: ERROR - Button_Suspect3 not found at $Control_Identify/ColorRect/MarginContainer/VBoxContainer/Button_Suspect4")
 
 	if back_button:
 		back_button.pressed.connect(_on_back_button_pressed)
@@ -155,6 +189,20 @@ func _on_no_button_pressed():
 		push_warning("DialogUI: ERROR - Cannot hide confirmation; controls not assigned")
 
 func _on_yes_button_pressed():
+	Initialization.alibi.clear()
+	Initialization.evidence.clear()
+	
+	var killer = Initialization.npcs[randi() % Initialization.npcs.size()]
+	match(killer.split("_")[0]):
+		"Boy":
+			Initialization.suspect = "Jay"
+		"Chef":
+			Initialization.suspect = "Rita"
+		"Tailor":
+			Initialization.suspect = "Lina"
+		_:
+			Initialization.suspect = "Detective"
+			
 	# Confirm selection, hide confirmation and Control_Identify, show Control_Dialog, hide IdentifyMurderer button
 	if confirmation_control and identify_control and dialog_control:
 		confirmation_control.visible = false

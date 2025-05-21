@@ -66,6 +66,7 @@ theme_override_font_sizes/font_size = 40
 text = "Next"
 
 [node name="IdentifyMurderer" type="Button" parent="Control_Dialog/ColorRect/CenterContainer/GridContainer_Button"]
+visible = false
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -121,9 +122,9 @@ justification_flags = 161
 
 [node name="CenterContainer" type="CenterContainer" parent="Control_Identify/ColorRect"]
 layout_mode = 0
-offset_top = 500.0
+offset_top = 541.0
 offset_right = 1280.0
-offset_bottom = 720.0
+offset_bottom = 761.0
 
 [node name="GridContainer_Button" type="GridContainer" parent="Control_Identify/ColorRect/CenterContainer"]
 layout_mode = 2
@@ -167,6 +168,12 @@ custom_minimum_size = Vector2(600, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Jay (Streamer)"
+
+[node name="Button_Suspect4" type="Button" parent="Control_Identify/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Detective"
 
 [node name="Control_Confirmation" type="Control" parent="."]
 visible = false

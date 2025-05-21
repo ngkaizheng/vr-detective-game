@@ -20,6 +20,9 @@ var appended_messages: Array[String] = []
 var has_updated_messages: bool = false
 
 func _ready() -> void:
+	
+	has_updated_messages = false
+	
 	# Initialize node references and signals
 	_log("Initializing detection script, collision_group=%s" % collision_group)
 
@@ -41,11 +44,19 @@ func _ready() -> void:
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	_log("Body entered detection area, body=%s" % body)
 	
+	if body.get_parent().name == "Document":
+		Initialization._update_document()
+		
+	if body.get_parent().name == "Scissor_Pickable":
+		if not Initialization.alibi.has(interactable.name) and interactable.name != "ClueBoard":
+			Initialization.alibi.append(interactable.name)
+			Initialization._update_alibi()
+	
 	# Check if messages have already been updated
 	if has_updated_messages:
 		_log("Messages already updated for group '%s', skipping" % collision_group)
 		return
-
+	
 	# Check if the body or its parent is in the collision group
 	var current_node = body
 	while current_node:

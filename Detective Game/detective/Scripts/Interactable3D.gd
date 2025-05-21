@@ -11,6 +11,7 @@ enum InteractionType {
 }
 
 ## Exported properties for customization in the editor
+@export var is_killer: bool = false
 @export var interaction_type: InteractionType = InteractionType.DIALOG
 @export var target_group: String = "player" ## Group name of the interacting entity (e.g., "player")
 @export var messages: Array[String] = ["Interact to proceed!"] ## Messages or prompt text
@@ -37,10 +38,19 @@ var interacting_entity: Node = null
 @onready var message_label: Label = (dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Dialog") if dialog and dialog.get_scene_instance() else null)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+#@onready var weapon_status: Label = (dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer2/Progress1") if dialog and dialog.get_scene_instance() else null)
+#@onready var weapon_notes: Label = (dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer3/Note1") if dialog and dialog.get_scene_instance() else null)
+
 ## Store original scale of prompt for enabling/disabling
 var original_prompt_scale: Vector3 = Vector3(1, 1, 1)
 
 func _ready() -> void:
+	
+	
+	# Set killer	
+	if Initialization.killer == self.name:
+		is_killer = true
+		
 	# Initialize node references and signals
 	_log("Initializing interactable object, interaction_type=%s" % InteractionType.keys()[interaction_type])
 
@@ -198,7 +208,18 @@ func _update_display() -> void:
 	elif interaction_type == InteractionType.PROMPT and message_label:
 		message_label.text = messages[0] if messages.size() > 0 else ""
 		_log("Prompt updated, message=%s" % message_label.text)
+		
 	else:
+		match(messages[current_message_index]):
+			"Weapon":
+				dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer2/Progress1").text = "Done"
+				dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer2/Progress1").add_theme_color_override("font_color", Color(0, 1, 0)) 
+				dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer3/Note1").text =  Initialization.suspect + " 's fingerprint"
+				dialog.get_scene_instance().get_node("Control_Dialog/ColorRect/Control_Ending1/VBoxContainer3/Note1").add_theme_color_override("font_color", Color(0, 1, 0)) 
+				if not Initialization.evidence.has("Weapon"):
+					Initialization.evidence.append("Weapon")
+					Initialization._update_evidence()
+				
 		_log("WARNING: Cannot update display (invalid mode or null label)", true)
 
 func _on_animation_finished(anim_name: String) -> void:
